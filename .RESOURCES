@@ -1,0 +1,9 @@
+Possible intersting packages
+
+chalk – colorizes the output
+clear – clears the terminal screen
+clui – draws command line tables, gauges and spinners
+figlet – creates ASCII art from text
+inquirer – creates interactive command line user interface
+minimist – parses argument options
+preferences – manage CLI application encrypted preferences
