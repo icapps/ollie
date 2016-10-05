@@ -1,4 +1,4 @@
-var Oli = require('./Oli');
+import Ollie from './Ollie';
 
-var oli = new Oli();
-oli.basic();
+const ollie = new Ollie();
+ollie.basic();

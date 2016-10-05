@@ -1,25 +1,28 @@
-const projectTypes = [
+export const projectTypes = [
     {
         name: 'Web',
-        questionnaire: 'WebQuestionnaire',
+        survey: 'WebSurvey',
         boilerPlates: [
             {
                 name: 'Express',
-                repository: 'https://bitbucket.org/samover/node-express-template'
-            }
-        ]
+                repository: 'https://bitbucket.org/samover/node-express-template',
+            }, {
+                name: 'Sails',
+                repository: 'https://bitbucket.org/samover/node-sails-template',
+            }, {
+                name: 'Keystone',
+                repository: 'https://bitbucket.org/samover/node-keystone-template',
+            },
+        ],
     },
     {
         name: 'Android',
-        boilerPlates: []
+        survey: 'WebSurvey',
+        boilerPlates: [],
     },
     {
         name: 'iOS',
-        boilerPlates: []
+        survey: 'WebSurvey',
+        boilerPlates: [],
     },
-]
-
-
-module.exports = {
-    projectTypes,
-};
+];
