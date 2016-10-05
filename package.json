@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node index",
     "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "./node_modules/.bin/eslint ./ --cache --ignore-pattern .gitignore",
   },
+  "precommit": [
+    "lint"
   "author": "Robin Houdmeyers <houdmeyers@gmail.com>",
   "license": "ISC",
   "dependencies": {
@@ -28,5 +31,6 @@
     "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-mocha": "^4.5.1",
     "eslint-plugin-node": "^2.1.1"
+    "eslint-plugin-node": "^2.1.1",
   }
 }
