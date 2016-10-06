@@ -1,4 +1,4 @@
-export const bitbucketCredentials = [
+export const bitbucketCredentialQuestions = [
   {
     name: 'bitbucketUserName',
     message: 'We noticed you didn\'t enter any Bitbucket credentials, would you mind giving me your Bitbucket email address?',

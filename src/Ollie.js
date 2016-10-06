@@ -10,10 +10,18 @@ import surveys from './surveys';
 
 
 export default class Ollie {
+  static welcome() {
+    console.log(figlet.textSync('Oli', 'Standard'));
+    console.log(chalk.blue('Hi there!'));
+    console.log(chalk.blue('Let\'s get you started with a project...'));
+
+    // wait 2 seconds
+    // sleep.sleep(1);
+  }
 
   basic() {
-    // clear();
-    this.welcome();
+    clear();
+    Ollie.welcome();
 
     const questions = [
       {
@@ -30,16 +38,7 @@ export default class Ollie {
         const project = _.find(projectTypes, { name: answers.projectType });
         const Survey = surveys[project.survey];
         const survey = new Survey();
-        survey.ask();
+        survey.start();
       });
-  }
-
-  welcome() {
-    console.log(figlet.textSync('Oli', 'Standard'));
-    console.log(chalk.blue('Hi there!'));
-    console.log(chalk.blue('Let\'s get you started with a project...'));
-
-    // wait 2 seconds
-    // sleep.sleep(1);
   }
 }
