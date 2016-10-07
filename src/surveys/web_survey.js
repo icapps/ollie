@@ -21,7 +21,7 @@ export default class WebSurvey {
 
     inquirer.prompt(questions)
       .then((answers) => {
-        const { boilerPlate, name } = answers;
+        const { boilerplate, name } = answers;
 
         // clone repository
         cloneRepository(boilerplate, name)
