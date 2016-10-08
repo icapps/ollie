@@ -20,17 +20,9 @@ export default class WebSurvey {
     );
 
     inquirer.prompt(questions)
-      .then((answers) => {
-        const { boilerPlate, name } = answers;
-
-        // clone repository
-        cloneRepository(boilerplate, name)
-          .then(() => {
-
-          })
-          .catch(() => {
+      .then(cloneRepository)
+      .catch(() => {
             console.log(chalk.green('Error cloning :('));
-          })
-      });
+      })
   }
 }
