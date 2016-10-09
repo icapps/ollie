@@ -1,9 +1,9 @@
 import { exec } from 'child_process';
-import chalk from 'chalk';
 import { Spinner } from 'cli-spinner';
-import { formatCloneCommand } from './format-clone-command';
 
-export function cloneRepository(cloneData) {
+import formatCloneCommand from './format-clone-command';
+
+function cloneRepository(cloneData) {
   const { boilerplate, name } = cloneData;
   const cloneCmd = formatCloneCommand(cloneData);
 
@@ -13,13 +13,14 @@ export function cloneRepository(cloneData) {
     spinner.start();
 
     exec(cloneCmd, {}, (err) => {
-      if (err) {
-        reject(err);
-      }
-
-      console.log(chalk.green('Cloned'));
-      spinner.stop();
-      resolve();
+        if (err) {
+            reject(err);
+        } else {
+            spinner.stop();
+            resolve();
+        }
     });
   });
 }
+
+export { cloneRepository as default };
