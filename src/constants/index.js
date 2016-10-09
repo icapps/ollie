@@ -1,4 +1,4 @@
-export const projectTypes = [
+const projectTypes = [
     {
         name: 'Web',
         survey: 'WebSurvey',
@@ -26,3 +26,5 @@ export const projectTypes = [
         boilerPlates: [],
     },
 ];
+
+export { projectTypes as default };

@@ -1,3 +1,4 @@
+/*
 const defaultOptions = {
   recursive: true,
 };
@@ -11,6 +12,8 @@ const defaultOptions = {
  * @param options {object}
  * @param options.recursively {boolean} - should the replacement go recursively through directories and files inside the path
  */
+/*
 export default function findAndReplace(path, pattern, value, options = defaultOptions) {
 
 }
+*/
