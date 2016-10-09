@@ -37,12 +37,6 @@ export default class Ollie {
     basic() {
         this.welcome();
         inquirer.prompt(this.openingQuestions())
-            .then((answers) => {
-                this.startSurvey(answers);
-            })
-            .catch((err) => {
-                console.error(err);
-                console.info(err.stack);
-            });
+            .then(answers => this.startSurvey(answers));
     }
 }

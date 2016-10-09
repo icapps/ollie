@@ -13,12 +13,9 @@ function cloneRepository(cloneData) {
     spinner.start();
 
     exec(cloneCmd, {}, (err) => {
-        if (err) {
-            reject(err);
-        } else {
-            spinner.stop();
-            resolve();
-        }
+        if (err) reject(err);
+        spinner.stop();
+        resolve();
     });
   });
 }
