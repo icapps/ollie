@@ -11,7 +11,7 @@ import surveys from './surveys';
 
 export default class Ollie {
   static welcome() {
-    console.log(figlet.textSync('Oli', 'Standard'));
+    console.log(figlet.textSync('Ollie', 'Standard'));
     console.log(chalk.blue('Hi there!'));
     console.log(chalk.blue('Let\'s get you started with a project...'));
 
