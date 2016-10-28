@@ -1,10 +1,12 @@
 import { exec } from 'child_process';
 import { Spinner } from 'cli-spinner';
 
-import formatCloneCommand from './format-clone-command';
+import { formatCloneCommand } from './format-clone-command';
 
-function cloneRepository(cloneData) {
+// eslint-disable-next-line import/prefer-default-export
+export function cloneRepository(cloneData) {
   const { boilerplate, name } = cloneData;
+  console.log('CLONEDATA', cloneData);
   const cloneCmd = formatCloneCommand(cloneData);
 
   return new Promise((resolve, reject) => {
@@ -13,11 +15,10 @@ function cloneRepository(cloneData) {
     spinner.start();
 
     exec(cloneCmd, {}, (err) => {
-        if (err) reject(err);
-        spinner.stop();
-        resolve();
+      if (err) reject(err);
+      spinner.stop();
+      resolve();
     });
   });
 }
 
-export { cloneRepository as default };

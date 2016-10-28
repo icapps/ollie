@@ -1,7 +1,8 @@
 import url from 'url';
 import querystring from 'querystring';
 
-function formatCloneCommand(cloneData) {
+// eslint-disable-next-line import/prefer-default-export
+export function formatCloneCommand(cloneData) {
     const { boilerplate, name, bitbucketUserName, bitbucketPassword } = cloneData;
     const urlObject = url.parse(boilerplate.repository);
 
@@ -11,5 +12,3 @@ function formatCloneCommand(cloneData) {
 
     return `git clone ${urlObject.protocol}//${escapedUsername}:${escapedPassword}@${urlObject.host}${urlObject.pathname} ${name}`;
 }
-
-export { formatCloneCommand as default };
