@@ -1,44 +1,42 @@
 import _ from 'lodash';
 import inquirer from 'inquirer';
 import clear from 'clear';
-// import sleep from 'sleep';
 import figlet from 'figlet';
 import chalk from 'chalk';
 
-import { projectTypes } from './constants';
-import surveys from './surveys';
-
-
 export default class Ollie {
-  static welcome() {
-    console.log(figlet.textSync('Oli', 'Standard'));
-    console.log(chalk.blue('Hi there!'));
-    console.log(chalk.blue('Let\'s get you started with a project...'));
-
-    // wait 2 seconds
-    // sleep.sleep(1);
+  constructor(options) {
+    this.projectTypes = options.projectTypes;
+    this.surveys = options.surveys;
+    this.welcome = () => {
+      clear();
+      console.log(figlet.textSync('Oli', 'Standard'));
+      console.log(chalk.blue('Hi there!'));
+      console.log(chalk.blue('Let\'s get you started with a project...'));
+    };
   }
 
-  basic() {
-    clear();
-    Ollie.welcome();
-
-    const questions = [
+  openingQuestions() {
+    return [
       {
         name: 'projectType',
         message: 'What kind of project would you like to generate?',
         type: 'list',
-        choices: _.map(projectTypes, 'name'),
+        choices: _.map(this.projectTypes, 'name'),
       },
     ];
+  }
 
+  startSurvey(answers) {
+    const project = _.find(this.projectTypes, { name: answers.projectType });
+    const Survey = this.surveys[project.survey];
+    const survey = new Survey();
+    survey.start();
+  }
 
-    inquirer.prompt(questions)
-      .then((answers) => {
-        const project = _.find(projectTypes, { name: answers.projectType });
-        const Survey = surveys[project.survey];
-        const survey = new Survey();
-        survey.start();
-      });
+  basic() {
+    this.welcome();
+    inquirer.prompt(this.openingQuestions())
+      .then(answers => this.startSurvey(answers));
   }
 }

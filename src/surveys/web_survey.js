@@ -1,28 +1,18 @@
-import inquirer  from 'inquirer';
+import SurveyTemplate from './surveyTemplate';
+import webBoilerplateQuestions from '../questions/boilerplate_questions';
+import projectNameQuestions from './../questions/general_questions';
+import bitbucketCredentialQuestions from './../questions/bitbucket_questions';
 import { cloneRepository } from './../utils/git';
 
-import { webBoilerplateQuestions } from '../questions/boilerplate_questions';
-import { projectNameQuestions } from './../questions/general_questions';
-import { bitbucketCredentialQuestions }  from '../questions/bitbucket_questions';
+const questions = [].concat(webBoilerplateQuestions, projectNameQuestions, bitbucketCredentialQuestions);
 
-export default class WebSurvey {
-  start() {
+export default class WebSurvey extends SurveyTemplate {
+  constructor() {
+    super(questions);
+  }
 
-    const questions = [].concat(
-      // ask for which web boilerplate
-      webBoilerplateQuestions,
-
-      // ask the project name
-      projectNameQuestions,
-
-      // ask bitbucket credentials
-      bitbucketCredentialQuestions
-    );
-
-    inquirer.prompt(questions)
-      .then(cloneRepository)
-      .catch(() => {
-            console.log(chalk.green('Error cloning :('));
-      })
+  process(answers) {
+    console.log('ANSWERS', answers);
+    return cloneRepository(answers);
   }
 }

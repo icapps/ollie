@@ -30,7 +30,8 @@
       {
         "devDependencies": true,
       }
-    ]
+    ],
+    "class-methods-use-this": ["off"]
   },
   "globals": {
     "base": false,
