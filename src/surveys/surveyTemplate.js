@@ -24,7 +24,6 @@ export default class SurveyTemplate {
   }
 
   start() {
-    console.log('QUESTIONS', this.questions);
     return inquirer.prompt(this.questions)
       .then(this.process)
       .then(() => this.exitWithSucces())

@@ -6,7 +6,6 @@ import { formatCloneCommand } from './format-clone-command';
 // eslint-disable-next-line import/prefer-default-export
 export function cloneRepository(cloneData) {
   const { boilerplate, name } = cloneData;
-  console.log('CLONEDATA', cloneData);
   const cloneCmd = formatCloneCommand(cloneData);
 
   return new Promise((resolve, reject) => {
