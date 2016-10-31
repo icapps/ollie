@@ -2,9 +2,11 @@ import SurveyTemplate from './surveyTemplate';
 import webBoilerplateQuestions from '../questions/boilerplate_questions';
 import projectNameQuestions from './../questions/general_questions';
 import bitbucketCredentialQuestions from './../questions/bitbucket_questions';
-import { cloneRepository } from './../utils/git';
+import { createRepositoryQuestions } from './../questions/git_questions';
+import { initRepository, cloneRepository, setRemote, initialCommit } from './../utils/git';
+import { create as createLocalRepository } from './../utils/localRepository';
 
-const questions = [].concat(webBoilerplateQuestions, projectNameQuestions, bitbucketCredentialQuestions);
+const questions = [].concat(webBoilerplateQuestions, projectNameQuestions, createRepositoryQuestions, bitbucketCredentialQuestions);
 
 export default class WebSurvey extends SurveyTemplate {
   constructor() {
@@ -12,6 +14,10 @@ export default class WebSurvey extends SurveyTemplate {
   }
 
   process(answers) {
-    return cloneRepository(answers);
+    return createLocalRepository(answers)
+    .then(() => cloneRepository(answers))
+    .then(() => initRepository(answers))
+    .then(() => setRemote())
+    .then(() => initialCommit());
   }
 }
