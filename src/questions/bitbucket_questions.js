@@ -11,4 +11,4 @@ const bitbucketCredentialQuestions = [
   },
 ];
 
-export { bitbucketCredentialQuestions as default};
+export { bitbucketCredentialQuestions as default };
