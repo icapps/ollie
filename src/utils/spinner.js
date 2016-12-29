@@ -1,15 +1,20 @@
-import { Spinner } from 'cli-spinner';
+import {Spinner as CliSpinner} from 'cli-spinner';
 
-let spinner;
+export default class Spinner {
+  constructor(text, autostart) {
+    this.spinner = new CliSpinner(text);
+    this.spinner.setSpinnerString('|/-\\');
 
-export function start(text) {
-  spinner = new Spinner(text);
-  spinner.setSpinnerString('|/-\\');
-  spinner.start();
-}
+    if (autostart) {
+      this.start();
+    }
+  }
 
-export function stop() {
-  if (spinner) {
-    spinner.stop();
+  start() {
+    this.spinner.start();
+  }
+
+  stop() {
+    this.spinner.stop();
   }
 }

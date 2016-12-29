@@ -4,7 +4,7 @@ const request = require('request');
 // TODO: create a repository under a new/existing team/project
 // TODO: add Github support
 export function createRepository(data) {
-  const { name, gitService } = data;
+  const {name, gitService} = data;
 
   return new Promise((resolve, reject) => {
     const urlObject = url.parse(gitService.api);
@@ -16,10 +16,13 @@ export function createRepository(data) {
     };
 
     let path;
+    let remoteRepository = '';
+
     switch (gitService.name) {
       case 'Bitbucket':
-        const { bitbucketUserName, bitbucketPassword, name } = data;
+        const {bitbucketUserName, bitbucketPassword, name} = data;
         path = `${urlObject.protocol}//${bitbucketUserName}:${bitbucketPassword}@${urlObject.host}${urlObject.pathname}/repositories/${bitbucketUserName}/${name}`;
+        remoteRepository = `${urlObject.protocol}//${bitbucketUserName}@bitbucket.org/${bitbucketUserName}/${name}.git`;
 
         // Only private repo's at the moment
         options.body.is_private = true;
@@ -32,9 +35,9 @@ export function createRepository(data) {
 
     request(options, function (error, response, body) {
       if (!error && response.statusCode == 200) {
-        resolve(response);
+        resolve(remoteRepository);
       } else {
-        reject({ error, body });
+        reject({error, body});
       }
     });
   });

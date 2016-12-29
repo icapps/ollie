@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import projectTypes from './../constants';
 
-const webProject = _.find(projectTypes, { name: 'Web' });
+const webProject = _.find(projectTypes, {name: 'Web'});
 
 const createRepositoryQuestions = [
   {
@@ -15,8 +15,9 @@ const createRepositoryQuestions = [
     message: 'Which service do you wish to use?',
     type: 'list',
     choices: _.map(webProject.providers, 'name'),
-    filter: answer => _.find(webProject.providers, { name: answer }),
+    filter: answer => _.find(webProject.providers, {name: answer}),
+    when: (answers) => { return answers.createRepository === 'Yes' },
   },
 ];
 
-export { createRepositoryQuestions };
+export {createRepositoryQuestions};
