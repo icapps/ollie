@@ -11,7 +11,7 @@
   "precommit": [
     "lint"
   ],
-  "author": "Robin Houdmeyers <houdmeyers@gmail.com>",
+  "author": "iCapps",
   "license": "ISC",
   "dependencies": {
     "chalk": "^1.1.3",

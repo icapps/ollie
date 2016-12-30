@@ -27,8 +27,7 @@ export default class GitHandler {
   createGitRepository() {
     if (this.answers.createRepository) {
       return this.initRepository()
-      .then(() => this.setRemote())
-      .then(() => this.initialCommit());
+      .then(() => this.setRemote());
     }
     return true;
   }
@@ -78,6 +77,13 @@ export default class GitHandler {
   // TODO - split up into multiple statements (better error handling)
   getInitialCommitCommand() {
     return `git -C ${this.localRepository.path} add . && git -C ${this.localRepository.path} commit -m 'initial commit' && git -C ${this.localRepository.path} push --force origin master`;
+  }
+
+  /**
+   * Getters
+   */
+  getRemoteRepository() {
+    return this.remoteRepository;
   }
 
 }
