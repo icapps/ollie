@@ -18,13 +18,13 @@ const projectTypes = [
       {
         name: 'Bitbucket',
         repository: 'https://bitbucket.org',
-        api: 'https://api.bitbucket.org/2.0'
+        api: 'https://api.bitbucket.org/2.0',
       }, {
         name: 'Github',
         repository: 'https://github.com',
-        api: ''
+        api: '',
       },
-    ]
+    ],
   },
   {
     name: 'Android',
