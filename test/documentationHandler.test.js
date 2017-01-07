@@ -53,6 +53,5 @@ describe('WEB', () => {
   });
 
   it('Revert back changes', () => JsonHandler.writeJson(`${answers.localRepositoryPath}/${answers.name}/package.json`, OLD_VALUES));
-
 });
 
