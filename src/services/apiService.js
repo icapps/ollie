@@ -2,11 +2,9 @@ import request from 'request';
 import url from 'url';
 
 class ApiServiceError extends Error {
-    constructor(body, statusCode, requestDetails) {
-        super(body.error ? body.error.message : 'Unknown error');
-        this.code = statusCode;
-        this.reason = body.error.detail;
-        this.requestDetails = requestDetails;
+    constructor(error) {
+        const message = error ? (error.details || error.message) : 'Unknown error';
+        super(message);
     }
 }
 
@@ -62,7 +60,7 @@ class ApiService {
 
             request(options, (error, response, body) => {
                 if (!error && response.statusCode === 200) resolve(this.getRemoteRepo());
-                else reject(error || new ApiServiceError(body, response.statusCode, options));
+                else reject(error || new ApiServiceError(body.error));
             });
         });
     }
