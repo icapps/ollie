@@ -5,24 +5,24 @@ const projectTypes = [
     boilerPlates: [
       {
         name: 'Express',
-        repository: 'https://github.com/icapps/node-express-template.git',
+          repository: 'git@github.com:icapps/node-express-template.git',
       }, {
         name: 'Sails',
-        repository: 'https://bitbucket.org/samover/node-sails-template',
+        repository: 'git@bitbucket.org:samover/node-sails-template',
       }, {
         name: 'Keystone',
-        repository: 'https://bitbucket.org/samover/node-keystone-template',
+        repository: 'git@bitbucket.org:samover/node-keystone-template',
       },
     ],
     providers: [
       {
         name: 'Bitbucket',
-        repository: 'https://bitbucket.org',
+        repository: 'bitbucket.org',
         api: 'https://api.bitbucket.org/2.0',
       }, {
         name: 'Github',
-        repository: 'https://github.com',
-        api: '',
+        repository: 'github.com',
+        api: 'https://api.github.com',
       },
     ],
   },
