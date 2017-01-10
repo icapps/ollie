@@ -18,8 +18,12 @@ export default class SurveyTemplate {
   }
 
   exitWithError(err) {
-    console.info(chalk.green(`\n${this.errorMessage}\n`));
-    console.info(chalk.red(err ? err.message : 'Unknown error'));
+    console.info(chalk.green(`\n${this.errorMessage}: `));
+    console.info(chalk.red(err.stack));
+
+    // FIXME: errorHandling could be cleaner here
+    console.info(err.reason);
+    console.info(err.requestDetails);
     process.exit(0);
   }
 
