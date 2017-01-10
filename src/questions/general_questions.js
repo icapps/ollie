@@ -12,8 +12,9 @@ const projectNameQuestions = [
   },
   {
     name: 'localRepositoryPath',
-    message: `Where would you like to store your new project? (${__dirname})`,
+    message: 'Where would you like to store your new project?',
     type: 'string',
+    default: process.cwd(),
   },
   {
     name: 'templateLocation',
