@@ -46,6 +46,10 @@ class ApiService {
         };
     }
 
+    getRepoUrl() {
+        return `${this.service.protocol}//${this.service.remote}/${this.username}/${this.repoName}`;
+    }
+
     getErrorObject(body, requestOptions) {
         if (!body.error) return { message: 'Unknown error', requestOptions };
         return ({

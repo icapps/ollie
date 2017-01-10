@@ -47,7 +47,8 @@ export default class GitHandler {
   initialCommit() {
     const spinner = new Spinner('Pushing initial commit %s', true);
     return exec(this.getInitialCommitCommand())
-    .then(() => spinner.stop());
+    .then(() => spinner.stop())
+    .then(() => this.apiService.getRepoUrl());
   }
 
 
