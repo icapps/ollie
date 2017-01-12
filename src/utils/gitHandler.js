@@ -22,11 +22,8 @@ export default class GitHandler {
   }
 
   createGitRepository() {
-    if (this.answers.createRepository) {
-      return this.initRepository()
-      .then(() => this.setRemote());
-    }
-    return true;
+    return this.initRepository()
+    .then(() => this.setRemote());
   }
 
   initRepository() {

@@ -61,7 +61,6 @@ class ApiService {
     createRepository() {
         return new Promise((resolve, reject) => {
             const options = this.getRequestOptions();
-
             request(options, (error, response, body) => {
                 if (!error && response.statusCode === 200) resolve(this.getRemoteRepo());
                 else reject(error || new ApiServiceError(body.error));
@@ -81,7 +80,7 @@ export class GithubApiService extends ApiService {
     }
 
     getRequestUrl() {
-        return `${this.service.protocol}//${this.username}:${this.password}@${this.service.host}${this.service.pathname}/repos/${this.username}/${this.repoName}`;
+        return `${this.service.protocol}//${this.username}:${this.password}@${this.service.host}${this.service.pathname}repos/${this.username}/${this.repoName}`;
     }
 
 }
