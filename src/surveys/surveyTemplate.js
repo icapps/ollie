@@ -12,21 +12,21 @@ export default class SurveyTemplate {
     return Promise.resolve();
   }
 
-  exitWithSucces() {
-    console.info(chalk.green(`\n${this.successMessage}\n`));
+  exitWithSucces(repoUrl) {
+    console.info(chalk.green(`\n${this.successMessage}. Check out your new repo at ${repoUrl}\n`));
     process.exit(0);
   }
 
   exitWithError(err) {
-    console.info(chalk.green(`\n${this.errorMessage}\n`));
-    console.info(chalk.red(err ? err.message : 'Unknown error'));
+    console.info(chalk.green(`\n${this.errorMessage}: `));
+    console.info(chalk.red(err.stack));
     process.exit(0);
   }
 
   start() {
     return inquirer.prompt(this.questions)
     .then(this.process)
-    .then(() => this.exitWithSucces())
+    .then(repoUrl => this.exitWithSucces(repoUrl))
     .catch(err => this.exitWithError(err));
   }
 }
