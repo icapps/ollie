@@ -1,4 +1,4 @@
-import {Spinner as CliSpinner} from 'cli-spinner';
+import { Spinner as CliSpinner } from 'cli-spinner';
 
 export default class Spinner {
   constructor(text, autostart) {
