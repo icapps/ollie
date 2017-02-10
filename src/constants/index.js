@@ -1,3 +1,5 @@
+/* eslint import/prefer-default-export: 1 */
+
 const projectTypes = [
   {
     name: 'Web',
@@ -38,4 +40,4 @@ const projectTypes = [
   },
 ];
 
-export { projectTypes as default };
+export { projectTypes };
