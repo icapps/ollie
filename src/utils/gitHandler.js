@@ -1,20 +1,17 @@
 import fs from 'fs-extra';
 import exec from './child-process-promise';
 import Spinner from './spinner';
-import ApiService from './../services/apiService';
-
+import * as apiServiceFactory from './../factories/apiServiceFactory';
 
 export default class GitHandler {
   constructor(answers, localRepository) {
-    // TODO: ES6 Syntax
     this.answers = answers;
     this.name = answers.name;
     this.boilerplate = answers.boilerplate;
 
     this.localRepository = localRepository;
     this.remoteRepository = null;
-
-    this.apiService = new ApiService(this.answers);
+    this.apiService = apiServiceFactory[`create${this.answers.gitService.name}ApiService`](this.answers);
   }
 
 
@@ -25,11 +22,8 @@ export default class GitHandler {
   }
 
   createGitRepository() {
-    if (this.answers.createRepository) {
-      return this.initRepository()
-      .then(() => this.setRemote());
-    }
-    return true;
+    return this.initRepository()
+    .then(() => this.setRemote());
   }
 
   initRepository() {
@@ -50,7 +44,8 @@ export default class GitHandler {
   initialCommit() {
     const spinner = new Spinner('Pushing initial commit %s', true);
     return exec(this.getInitialCommitCommand())
-    .then(() => spinner.stop());
+    .then(() => spinner.stop())
+    .then(() => this.apiService.getRepoUrl());
   }
 
 
