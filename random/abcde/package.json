@@ -1,0 +1,43 @@
+{
+  "name": "OLLIE_PROJECT_NAME",
+  "version": "1.0.0",
+  "description": "Ollie Generator Node-Express Template",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_PATH=$NODE_PATH:./lib node index.js",
+    "test": "NODE_PATH=$NODE_PATH:./lib node node_modules/mocha/bin/mocha --sort",
+    "lint": "./node_modules/.bin/eslint ./src --cache --ignore-pattern .gitignore",
+    "coverage": "node_modules/.bin/istanbul cover _mocha"
+  },
+  "precommit": [
+    "lint"
+  ],
+  "author": "samuel.overloop@icapps.com",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "helmet": "^2.3.0",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.0.0",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.3.0",
+    "dirty-chai": "^1.2.2",
+    "eslint": "^3.8.0",
+    "eslint-config-airbnb-base": "^7.2.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-mocha": "^4.5.1",
+    "eslint-plugin-node": "^2.0.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.0.2",
+    "nock": "^8.0.0",
+    "pre-commit": "^1.1.3",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0",
+    "supertest": "^2.0.0",
+    "supertest-as-promised": "^4.0.0"
+  }
+}

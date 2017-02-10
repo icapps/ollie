@@ -1,0 +1,5 @@
+--recursive
+--require ./test/test_helper.js
+--reporter spec
+--ui bdd
+--timeout 8000
