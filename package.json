@@ -8,9 +8,6 @@
     "lint": "./node_modules/.bin/eslint ./ --cache --config ./.eslintrc --ignore-pattern .gitignore",
     "test": "NODE_PATH=$NODE_PATH:./lib node node_modules/mocha/bin/mocha --sort"
   },
-  "precommit": [
-    "lint"
-  ],
   "author": "iCapps",
   "license": "ISC",
   "dependencies": {
@@ -25,7 +22,8 @@
     "lodash": "^4.16.2",
     "minimist": "^1.2.0",
     "preferences": "^0.2.1",
-    "request": "^2.76.0"
+    "request": "^2.76.0",
+    "seek-and-replace": "^1.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.16.0",
