@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import projectTypes from './../constants';
+import { projectTypes } from './../constants';
 
 const webProject = _.find(projectTypes, { name: 'Web' });
 
