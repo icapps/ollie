@@ -14,7 +14,6 @@ export default class GitHandler {
     this.apiService = apiServiceFactory[`create${this.answers.gitService.name}ApiService`](this.answers);
   }
 
-
   setRemote() {
     // const spinner = new Spinner('Initialising new git repository and adding remote %s', true);
     return exec(`git -C ${this.localRepository.path} remote add origin ${this.remoteRepository}`)
@@ -30,7 +29,14 @@ export default class GitHandler {
       .then(() => exec(`git -C ${this.localRepository.path} commit -m 'initial commit'`));
   }
 
-  pushToOrigin() {
+  createRemoteRepository() {
+    return this.apiService.createRepository()
+      .then((remoteRepositoryUrl) => {
+        return exec(`git -C ${this.localRepository.path} remote add origin ${remoteRepositoryUrl}`)
+      });
+  }
+
+  pushToRemote() {
     return exec(`git -C ${this.localRepository.path} push origin master`);
   }
 

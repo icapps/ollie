@@ -37,15 +37,6 @@ class ApiService {
         return `git@${this.service.remote}:${this.username}/${this.repoName}.git`;
     }
 
-    getRequestOptions() {
-        return {
-            method: 'POST',
-            json: true,
-            body: this.getRequestBody(),
-            url: this.getRequestUrl(),
-        };
-    }
-
     getRepoUrl() {
         return `${this.service.protocol}//${this.service.remote}/${this.username}/${this.repoName}`;
     }
@@ -60,7 +51,15 @@ class ApiService {
 
     createRepository() {
         return new Promise((resolve, reject) => {
-            const options = this.getRequestOptions();
+            const options = {
+              url: this.getRequestUrl(),
+              body: this.getRequestBody(),
+              method: 'POST',
+              json: true,
+            };
+
+            console.log('CREATE REPOSITORY OPTIONS', options);
+            
             request(options, (error, response, body) => {
                 if (!error && response.statusCode === 200) resolve(this.getRemoteRepo());
                 else reject(error || new ApiServiceError(body.error));
