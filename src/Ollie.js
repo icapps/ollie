@@ -10,7 +10,7 @@ export default class Ollie {
     this.surveys = options.surveys;
     this.welcome = () => {
       clear();
-      console.log(figlet.textSync('Oli', 'Standard'));
+      console.log(figlet.textSync('Ollie', 'Standard'));
       console.log(chalk.blue('Hi there!'));
       console.log(chalk.blue('Let\'s get you started with a project...'));
     };

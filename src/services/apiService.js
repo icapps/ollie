@@ -12,7 +12,7 @@ class ApiService {
     constructor(answers) {
         this.username = answers.gitServiceUsername;
         this.password = answers.gitServicePassword;
-        this.repoName = answers.name.toLowerCase();
+        this.repoName = answers.projectName.toLowerCase();
         this.repoDescription = answers.description;
         const urlObject = url.parse(answers.gitService.api);
         this.service = {

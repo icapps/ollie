@@ -6,7 +6,7 @@ import * as apiServiceFactory from './../factories/apiServiceFactory';
 export default class GitHandler {
   constructor(answers, localRepository) {
     this.answers = answers;
-    this.name = answers.name;
+    this.name = answers.projectName;
     this.boilerplate = answers.boilerplate;
 
     this.localRepository = localRepository;
@@ -15,70 +15,35 @@ export default class GitHandler {
   }
 
 
-  cloneRepository() {
-    const spinner = new Spinner(`Cloning template into ${this.localRepository.path} %s`, true);
-    return this.executeCloneOperation()
-    .then(() => spinner.stop());
-  }
-
-  createGitRepository() {
-    return this.initRepository()
-    .then(() => this.setRemote());
-  }
-
-  initRepository() {
-    const spinner = new Spinner(`Creating new repository ${this.name} %s`, true);
-    return this.apiService.createRepository()
-    .then((remoteUrl) => {
-      this.remoteRepository = remoteUrl;
-      return spinner.stop();
-    });
-  }
-
   setRemote() {
-    const spinner = new Spinner('Initialising new git repository and adding remote %s', true);
-    return exec(this.getRemoteCommand())
-    .then(() => spinner.stop());
+    // const spinner = new Spinner('Initialising new git repository and adding remote %s', true);
+    return exec(`git -C ${this.localRepository.path} remote add origin ${this.remoteRepository}`)
+  }
+
+  initializeGit() {
+    return exec(`git -C ${this.localRepository.path} init`);
   }
 
   initialCommit() {
-    const spinner = new Spinner('Pushing initial commit %s', true);
-    return exec(this.getInitialCommitCommand())
-    .then(() => spinner.stop())
-    .then(() => this.apiService.getRepoUrl());
+    return Promise.resolve()
+      .then(() => exec(`git -C ${this.localRepository.path} add .`))
+      .then(() => exec(`git -C ${this.localRepository.path} commit -m 'initial commit'`));
   }
 
+  pushToOrigin() {
+    return exec(`git -C ${this.localRepository.path} push origin master`);
+  }
 
-  /**
-   * Commands
-   */
-
-  executeCloneOperation() {
+  cloneTemplate() {
     if (this.answers.templateLocation === 'LOCAL') {
       return new Promise((resolve, reject) => {
         fs.copy(this.answers.templateLocationPath, this.localRepository.path, (error) => {
           if (error) reject(error);
-          resolve();
+          exec(`rm -rf ${this.localRepository.path}/.git`)
+            .then(resolve)
         });
       });
     }
     return exec(`git clone ${this.boilerplate.repository} ${this.localRepository.path} && rm -rf ${this.localRepository.path}/.git`);
   }
-
-  getRemoteCommand() {
-    return `git -C ${this.localRepository.path} init && git -C ${this.localRepository.path} remote add origin ${this.remoteRepository}`;
-  }
-
-  // TODO - split up into multiple statements (better error handling)
-  getInitialCommitCommand() {
-    return `git -C ${this.localRepository.path} add . && git -C ${this.localRepository.path} commit -m 'initial commit' && git -C ${this.localRepository.path} push --force origin master`;
-  }
-
-  /**
-   * Getters
-   */
-  getRemoteRepository() {
-    return this.remoteRepository;
-  }
-
 }
