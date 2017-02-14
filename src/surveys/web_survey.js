@@ -1,13 +1,21 @@
+import path from 'path';
+import inquirer from 'inquirer';
+
 import SurveyTemplate from './surveyTemplate';
-import webBoilerplateQuestions from '../questions/boilerplate_questions';
-import projectNameQuestions from './../questions/general_questions';
+import { webBoilerplateQuestions } from '../questions/boilerplate_questions';
+import projectQuestions from './../questions/general_questions';
 import createRepositoryQuestions from './../questions/git_questions';
 
 import GitHandler from '../utils/gitHandler';
 import LocalRepository from './../utils/localRepository';
-import DocumentationHandler from '../utils/documentationHandler';
+import seekAndReplace from './../utils/seek-and-replace';
+import { getOllieBoilerplateConfig } from './../utils/ollie-utils';
 
-const questions = [].concat(webBoilerplateQuestions, projectNameQuestions, createRepositoryQuestions);
+const questions = [].concat(
+  webBoilerplateQuestions,
+  projectQuestions,
+  createRepositoryQuestions
+);
 
 export default class WebSurvey extends SurveyTemplate {
   constructor() {
@@ -15,18 +23,20 @@ export default class WebSurvey extends SurveyTemplate {
   }
 
   process(answers) {
-    const localRepository = new LocalRepository(answers.localRepositoryPath, answers.name);
+    const localRepository = new LocalRepository(answers.localRepositoryPath, answers.projectName);
     const gitHandler = new GitHandler(answers, localRepository);
-    const documentationHandler = new DocumentationHandler(answers, localRepository, 'WEB');
+    const projectPath = path.join(answers.localRepositoryPath, answers.projectName);
 
-    return localRepository.createLocalDirectory()
-    .then(() => gitHandler.cloneRepository())
-    .then(() => gitHandler.createGitRepository())
-    .then(() => {
-      documentationHandler.setRemoteRepository(gitHandler.getRemoteRepository());
-      return documentationHandler.setDocumentation();
-    })
-    .then(() => gitHandler.initialCommit());
+    return Promise.resolve()
+      .then(() => localRepository.createLocalDirectory())
+      .then(() => gitHandler.cloneTemplate())
+      .then(() => getOllieBoilerplateConfig(projectPath))
+      .then((ollieConfig) => inquirer.prompt(ollieConfig.replacementQuestions))
+      .then((replacementAnswers) => seekAndReplace(answers.projectName, replacementAnswers, projectPath))
+      .then(() => gitHandler.initializeGit())
+      .then(() => gitHandler.initialCommit())
+      .then(() => gitHandler.createRemoteRepository())
+      .then(() => gitHandler.pushToRemote());
   }
 }
 

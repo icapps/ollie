@@ -1,14 +1,8 @@
-const projectNameQuestions = [
+const projectQuestions = [
   {
-    name: 'name',
+    name: 'projectName',
     message: 'What will be the name of the project?',
     type: 'string',
-  },
-  {
-    name: 'description',
-    message: 'What will be the description of the project?',
-    type: 'string',
-    default: 'Generator Template',
   },
   {
     name: 'localRepositoryPath',
@@ -31,4 +25,4 @@ const projectNameQuestions = [
 ];
 
 
-export { projectNameQuestions as default };
+export { projectQuestions as default };

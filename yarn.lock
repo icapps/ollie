@@ -1445,6 +1445,10 @@ esprima@^2.6.0:
   version "2.7.3"
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-2.7.3.tgz#96e3b70d5779f6ad49cd032673d1c312767ba581"
 
+esprima@^3.1.1:
+  version "3.1.3"
+  resolved "https://registry.yarnpkg.com/esprima/-/esprima-3.1.3.tgz#fdca51cee6133895e3c88d535ce49dbff62a4633"
+
 esrecurse@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/esrecurse/-/esrecurse-4.1.0.tgz#4713b6536adf7f2ac4f327d559e7756bff648220"
@@ -2018,6 +2022,13 @@ js-tokens@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-3.0.0.tgz#a2f2a969caae142fb3cd56228358c89366957bd1"
 
+js-yaml:
+  version "3.8.1"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.8.1.tgz#782ba50200be7b9e5a8537001b7804db3ad02628"
+  dependencies:
+    argparse "^1.0.7"
+    esprima "^3.1.1"
+
 js-yaml@^3.5.1:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.7.0.tgz#5c967ddd837a9bfdca5f2de84253abe8a1c03b80"
@@ -2202,7 +2213,7 @@ memoizee@0.3.x:
     next-tick "~0.2.2"
     timers-ext "0.1"
 
-micromatch@^2.1.5:
+micromatch@^2.1.5, micromatch@^2.3.11:
   version "2.3.11"
   resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-2.3.11.tgz#86677c97d1720b363431d04d0d15293bd38c1565"
   dependencies:
@@ -2701,6 +2712,18 @@ seek-and-replace:
     babel-core "^6.21.0"
     babel-preset-es2015 "^6.18.0"
     lodash "^4.17.4"
+    mocha "^3.2.0"
+    should "^11.1.2"
+
+seek-and-replace#1.0.4:
+  name seek-and-replace
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/seek-and-replace/-/seek-and-replace-1.0.4.tgz#22804b0395db721b59c048043b51725a0352440a"
+  dependencies:
+    babel-core "^6.21.0"
+    babel-preset-es2015 "^6.18.0"
+    lodash "^4.17.4"
+    micromatch "^2.3.11"
     mocha "^3.2.0"
     should "^11.1.2"
 

@@ -1,8 +1,15 @@
+import figlet from 'figlet';
+
 import SurveyTemplate from './surveyTemplate';
-import webBoilerplateQuestions from '../questions/boilerplate_questions';
+import { androidBoilerplateQuestions } from '../questions/boilerplate_questions';
 
 export default class AndroidSurvey extends SurveyTemplate {
   constructor() {
-    super(webBoilerplateQuestions);
+    super(androidBoilerplateQuestions);
+  }
+
+  process(answers) {
+    console.log('Android not yet implemented');
+    throw new Error('(;*△*;)');
   }
 }
