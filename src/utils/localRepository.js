@@ -2,7 +2,8 @@ import fs from 'fs-extra';
 
 export default class localRepository {
   constructor(path, name) {
-    this.path = path === '' || !path ? `${process.cwd()}/${name}` : `${path}/${name}`;
+    this.path = (path === '' || !path) ? `${process.cwd()}/${name}` : `${path}/${name}`;
+    console.log(this.path);
   }
 
   // TODO: Check fs-extra for better syntax

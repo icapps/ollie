@@ -16,8 +16,34 @@ Ollie will guide you through the generation of your new project by asking questi
 
 ### Installation
 
+Install the binary to make ollie availlable in your cli.
+
 ```bash
 $ npm install --global ollie
+```
+
+To push a project to Bitbucket, be sure to add your machine's ssh key to your Bitbucket account.  
+
+
+## Boilerplates
+
+A boilerplate can be of any language and framework type. Ollie knows predefined boileplates but don't feel held back to create your own boilerplate. 
+
+In need of special variable parts inside your boilerplate? `ollie.yml` can help with that!
+
+### `ollie.yml`
+
+Ollie can ask questions specific for your boilerplate. You can define theses questions in a file `ollie.yml`. An example: 
+
+```yaml
+replacementQuestions:
+  - name: NAME
+    message: Some name
+  - name:   DESCRIPTION
+    message: Describing the project
+  - name: AUTHOR_EMAIL
+    message: Author email address
+
 ```
 
 

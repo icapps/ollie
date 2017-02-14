@@ -11,4 +11,31 @@ const webBoilerplateQuestions = {
   filter: answer => _.find(webProject.boilerPlates, { name: answer }),
 };
 
-export { webBoilerplateQuestions as default };
+
+const IOSProject = _.find(projectTypes, { name: 'iOS' });
+
+const iOSBoilerplateQuestions = {
+  name: 'boilerplate',
+  message: 'So you are an IOS developer, tell me what kind you are.',
+  type: 'list',
+  choices: _.map(IOSProject.boilerPlates, 'name'),
+  filter: answer => _.find(IOSProject.boilerPlates, { name: answer }),
+};
+
+
+const AndroidProject = _.find(projectTypes, { name: 'Android' });
+
+const androidBoilerplateQuestions = {
+  name: 'boilerplate',
+  message: 'So you are an Android developer, tell me what kind you are.',
+  type: 'list',
+  choices: _.map(AndroidProject.boilerPlates, 'name'),
+  filter: answer => _.find(AndroidProject.boilerPlates, { name: answer }),
+};
+
+
+export {
+  webBoilerplateQuestions,
+  iOSBoilerplateQuestions,
+  androidBoilerplateQuestions
+};

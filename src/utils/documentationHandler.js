@@ -25,7 +25,7 @@ export default class DocumentationHandler {
 
   getJsonValues() {
     return {
-      name: this.answers.name,
+      name: this.answers.projectName,
       author: 'icapps',
       description: this.answers.description,
       repository: this.getCorrectRepositoryInfo(),

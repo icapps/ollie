@@ -7,7 +7,7 @@ const projectTypes = [
     boilerPlates: [
       {
         name: 'Express',
-          repository: 'git@github.com:icapps/node-express-template.git',
+        repository: 'git@github.com:icapps/node-express-template.git',
       }, {
         name: 'Sails',
         repository: 'git@bitbucket.org:samover/node-sails-template',
@@ -30,13 +30,26 @@ const projectTypes = [
   },
   {
     name: 'Android',
-    survey: 'WebSurvey',
-    boilerPlates: [],
+    survey: 'AndroidSurvey',
+    boilerPlates: [
+      {
+        name: 'Default',
+        repository: 'git@github.com:icapps/android-template.git',
+      },
+    ],
   },
   {
     name: 'iOS',
-    survey: 'WebSurvey',
-    boilerPlates: [],
+    survey: 'IOSSurvey',
+    boilerPlates: [
+      {
+        name: 'Swift',
+        repository: 'git@github.com:icapps/ios-swift-template.git',
+      }, {
+        name: 'Objective-C',
+        repository: 'git@github.com:icapps/objective-c-template.git',
+      },
+    ],
   },
 ];
 
