@@ -1,6 +1,6 @@
 {
-  "name": "ollie",
-  "version": "0.0.1",
+  "name": "ollie-cli",
+  "version": "0.0.2",
   "description": "Project boilerplate servant",
   "main": "index.js",
   "engines": {

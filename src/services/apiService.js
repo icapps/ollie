@@ -58,8 +58,6 @@ class ApiService {
               json: true,
             };
 
-            console.log('CREATE REPOSITORY OPTIONS', options);
-            
             request(options, (error, response, body) => {
                 if (!error && response.statusCode === 200) resolve(this.getRemoteRepo());
                 else reject(error || new ApiServiceError(body.error));
