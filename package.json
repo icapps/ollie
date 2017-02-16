@@ -1,5 +1,5 @@
 {
-  "name": "ollie",
+  "name": "ollie-cli",
   "version": "0.0.1",
   "description": "Project boilerplate servant",
   "main": "index.js",
