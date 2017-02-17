@@ -13,7 +13,7 @@ const createRepositoryQuestions = [
   },
   {
     name: 'gitServiceUsername',
-    message: answers => `We noticed you didn't enter any ${answers.gitService.name} credentials, would you mind giving me your ${answers.gitService.name}} username?`,
+    message: answers => `We noticed you didn't enter any ${answers.gitService.name} credentials, would you mind giving me your ${answers.gitService.name} username?`,
     type: 'string',
   },
   {
