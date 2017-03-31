@@ -23,6 +23,7 @@
     "clear": "0.0.1",
     "cli-spinner": "^0.2.5",
     "clui": "^0.3.1",
+    "commander": "^2.9.0",
     "figlet": "^1.1.2",
     "fs-extra": "^1.0.0",
     "github": "^3.1.0",
