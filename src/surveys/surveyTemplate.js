@@ -25,8 +25,8 @@ export default class SurveyTemplate {
 
   start() {
     return inquirer.prompt(this.questions)
-    .then(this.process)
-    .then(repoUrl => this.exitWithSucces(repoUrl))
-    .catch(err => this.exitWithError(err));
+      .then(this.process)
+      .then(repoUrl => this.exitWithSucces(repoUrl))
+      .catch(err => this.exitWithError(err));
   }
 }

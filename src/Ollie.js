@@ -5,15 +5,26 @@ import figlet from 'figlet';
 import chalk from 'chalk';
 
 export default class Ollie {
-  constructor(options) {
+  constructor(options = {}) {
     this.projectTypes = options.projectTypes;
     this.surveys = options.surveys;
+    this.development = options.development || false;
+
     this.welcome = () => {
-      clear();
+    };
+  }
+
+  start() {
+    this.printWelcome();
+    inquirer.prompt(this.openingQuestions())
+      .then(answers => this.startSurvey(answers));
+  }
+
+  printWelcome() {
+      // clear();
       console.log(figlet.textSync('Ollie', 'Standard'));
       console.log(chalk.blue('Hi there!'));
       console.log(chalk.blue('Let\'s get you started with a project...'));
-    };
   }
 
   openingQuestions() {
@@ -31,12 +42,11 @@ export default class Ollie {
     const project = _.find(this.projectTypes, { name: answers.projectType });
     const Survey = this.surveys[project.survey];
     const survey = new Survey();
-    survey.start();
-  }
 
-  basic() {
-    this.welcome();
-    inquirer.prompt(this.openingQuestions())
-    .then(answers => this.startSurvey(answers));
+    if (this.development) {
+      return survey.startDevelopment();
+    }
+
+    return survey.start();
   }
 }

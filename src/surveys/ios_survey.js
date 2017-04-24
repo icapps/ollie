@@ -7,7 +7,7 @@ import projectQuestions from './../questions/general_questions';
 import createRepositoryQuestions from './../questions/git_questions';
 
 import GitHandler from '../utils/gitHandler';
-import LocalRepository from './../utils/localRepository';
+import LocalRepository from './../utils/local-repository';
 import seekAndReplace from './../utils/seek-and-replace';
 import { getOllieBoilerplateConfig } from './../utils/ollie-utils';
 

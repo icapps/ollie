@@ -8,9 +8,16 @@ program
   .option('-d, --dev', 'Run in development mode')
   .parse(process.argv);
 
+const ollie = new Ollie({ 
+  projectTypes, 
+  surveys,
+  development: program.dev
+});
+
 if (program.dev) {
+  console.log('-----------------------');
   console.log('Run in development mode');
-} else {
-  const ollie = new Ollie({ projectTypes, surveys });
-  ollie.start();
+  console.log('-----------------------');
 }
+
+ollie.start();

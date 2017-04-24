@@ -1,13 +1,13 @@
 import fs from 'fs-extra';
+import GitHandler from '../utils/gitHandler';
 
-export default class localRepository {
+export default class LocalRepository {
   constructor(path, name) {
     this.path = (path === '' || !path) ? `${process.cwd()}/${name}` : `${path}/${name}`;
-    console.log(this.path);
   }
 
   // TODO: Check fs-extra for better syntax
-  createLocalDirectory() {
+  createLocalRepository() {
     return new Promise((resolve, reject) => {
       // Only create new directory if doesn't exist already
       if (!fs.existsSync(this.path)) {
@@ -18,5 +18,8 @@ export default class localRepository {
       }
       resolve();
     });
+
+    // const gitHandler = new GitHandler(answers, localRepository);
+    GitHandler.clone(repository, this.path)
   }
 }

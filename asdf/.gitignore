@@ -1,0 +1,10 @@
+config/env/*
+coverage/
+.eslintcache
+
+# Npm
+npm-debug.log
+node_modules
+
+# Webstorm
+.idea

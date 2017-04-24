@@ -10,6 +10,7 @@
     "prepublish": "npm run build",
     "build": "node_modules/.bin/babel src -d lib",
     "start": "node_modules/.bin/babel-node index.js",
+    "start:dev": "node_modules/.bin/babel-node index.js --dev",
     "lint": "./node_modules/.bin/eslint ./ --cache --config ./.eslintrc --ignore-pattern .gitignore",
     "test": "NODE_PATH=$NODE_PATH:./lib node node_modules/mocha/bin/mocha --sort"
   },
