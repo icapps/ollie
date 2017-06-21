@@ -1,7 +1,0 @@
-replacementQuestions:
-  - name: NAME
-    message: Name
-  - name:   DESCRIPTION
-    message: Description
-  - name: AUTHOR_EMAIL
-    message: Author email address
