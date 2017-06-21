@@ -6,7 +6,6 @@
  * Copyright (c) 2016 iCapps. All rights reserved.
  */
 
-'use strict';
 
 const morgan = require('morgan');
 

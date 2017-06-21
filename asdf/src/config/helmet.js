@@ -7,7 +7,6 @@
  *
  */
 
-'use strict';
 
 const helmet = require('helmet');
 

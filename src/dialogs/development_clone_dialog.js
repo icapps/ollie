@@ -21,12 +21,10 @@ export default class DevelopmentCloneDialog {
         const localPath = this.projectName;
 
         return exec(`cp -r ${answers.templateLocationPath} ${localPath}`)
-          .then(() => 
-            exec(`rm -rf ${ path.join(localPath, '.git') }`)
+          .then(() =>
+            exec(`rm -rf ${path.join(localPath, '.git')}`)
           )
-          .then(() => {
-            return { localPath };
-          }); 
+          .then(() => ({ localPath }));
       });
   }
-} 
+}

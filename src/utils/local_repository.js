@@ -20,6 +20,6 @@ export default class LocalRepository {
     });
 
     // const gitHandler = new GitHandler(answers, localRepository);
-    GitHandler.clone(repository, this.path)
+    GitHandler.clone(repository, this.path);
   }
 }

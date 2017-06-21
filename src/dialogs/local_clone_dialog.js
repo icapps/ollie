@@ -20,21 +20,19 @@ export default class LocalCloneDialog {
   start() {
     return inquirer.prompt(this.questions)
       .then((answers) => {
-        const clonePath = path.join(answers.localPath, this.name)
+        const clonePath = path.join(answers.localPath, this.name);
 
         if (Fs.directoryExists(clonePath)) {
-          throw new Error(`Couldn't clone repository, this directory already exists:`, clonePath);
+          throw new Error('Couldn\'t clone repository, this directory already exists:', clonePath);
         }
 
         return Git.clone(this.repository, clonePath)
-          .then(() => 
-            exec(`rm -rf ${ path.join(clonePath, '.git') }`)
+          .then(() =>
+            exec(`rm -rf ${path.join(clonePath, '.git')}`)
           )
-          .then(() => {
-            return {
+          .then(() => ({
               localPath: clonePath,
-            };
-          });
+            }));
       });
   }
 }

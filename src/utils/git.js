@@ -15,7 +15,7 @@ export default class Git {
   }
 
   setRemote() {
-    return exec(`git -C ${this.localRepository.path} remote add origin ${this.remoteRepository}`)
+    return exec(`git -C ${this.localRepository.path} remote add origin ${this.remoteRepository}`);
   }
 
   initialize() {
@@ -30,9 +30,7 @@ export default class Git {
 
   createRemoteRepository() {
     return this.apiService.createRepository()
-      .then((remoteRepositoryUrl) => {
-        return exec(`git -C ${this.localRepository.path} remote add origin ${remoteRepositoryUrl}`)
-      });
+      .then(remoteRepositoryUrl => exec(`git -C ${this.localRepository.path} remote add origin ${remoteRepositoryUrl}`));
   }
 
   pushToRemote() {

@@ -8,10 +8,10 @@ program
   .option('-d, --dev', 'Run in development mode')
   .parse(process.argv);
 
-const ollie = new Ollie({ 
-  projectTypes, 
+const ollie = new Ollie({
+  projectTypes,
   surveys,
-  development: program.dev
+  development: program.dev,
 });
 
 if (program.dev) {

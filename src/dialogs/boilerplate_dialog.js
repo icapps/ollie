@@ -28,7 +28,7 @@ const questions = {
     choices: _.map(androidProject.boilerPlates, 'name'),
     filter: answer => _.find(AndroidProject.boilerPlates, { name: answer }),
   },
-}
+};
 
 const generalQuestions = [
   {
@@ -36,11 +36,10 @@ const generalQuestions = [
     message: 'What will be the name of the project?',
     type: 'string',
   },
-]
+];
 
 export default class BoilerplateDialog {
   constructor(type) {
-
     this.questions = _.concat(
       [],
       this._getQuestionsForType(questions, type),
@@ -50,9 +49,7 @@ export default class BoilerplateDialog {
 
   start() {
     return inquirer.prompt(this.questions)
-      .then((answers) => {
-        return answers;
-      });
+      .then(answers => answers);
   }
 
   _getQuestionsForType(questions, type) {
@@ -65,8 +62,8 @@ export default class BoilerplateDialog {
     if (questionTypes.includes(type)) {
       return questions[type];
     } else {
-      throw new Error(`This boilerplate type doens't exist: ${type}.`)
+      throw new Error(`This boilerplate type doens't exist: ${type}.`);
     }
   }
-} 
+}
 

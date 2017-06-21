@@ -34,7 +34,7 @@ export default class WebSurvey {
         return localCloneDialog.start();
       })
       .then((answers) => {
-        console.log('Local clone success', 'Now let\'s replace Ollie vars'); 
+        console.log('Local clone success', 'Now let\'s replace Ollie vars');
         this.answers.localPath = answers.localPath;
 
         const replaceVariablesDialog = new ReplaceVariablesDialog(this.answers.projectName, this.answers.localPath);
@@ -55,7 +55,7 @@ export default class WebSurvey {
         return developmentCloneDialog.start();
       })
       .then((answers) => {
-        console.log('Development clone success', 'Now let\'s replace Ollie vars'); 
+        console.log('Development clone success', 'Now let\'s replace Ollie vars');
         this.answers.localPath = answers.localPath;
 
         const replaceVariablesDialog = new ReplaceVariablesDialog(this.answers.projectName, this.answers.localPath);

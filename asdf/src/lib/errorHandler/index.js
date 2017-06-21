@@ -6,7 +6,6 @@
  * Copyright (c) 2016 iCapps. All rights reserved.
  */
 
-'use strict';
 
 module.exports = exports = (err, req, res) => {
     if (process.env.NODE_ENV === 'development') {

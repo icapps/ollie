@@ -12,19 +12,14 @@ export default class ReplaceVariablesDialog {
   }
 
   start() {
-
     return Promise.resolve()
-      .then(() => {
-        return OllieHelpers.getConfig(this.path);
-      })
-      .then((ollieConfig) => {
-        return inquirer.prompt(ollieConfig.replacementQuestions)
-      })
+      .then(() => OllieHelpers.getConfig(this.path))
+      .then(ollieConfig => inquirer.prompt(ollieConfig.replacementQuestions))
       .then((replacementAnswers) => {
         console.log('@@@@@@@@@@@@@@@@@@@@@');
         console.log('replacementAnswers', replacementAnswers);
         console.log('@@@@@@@@@@@@@@@@@@@@@');
-        return seekAndReplace(this.projectName, replacementAnswers, this.path)
+        return seekAndReplace(this.projectName, replacementAnswers, this.path);
       });
   }
 }

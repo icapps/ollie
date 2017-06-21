@@ -37,5 +37,5 @@ const androidBoilerplateQuestions = {
 export {
   webBoilerplateQuestions,
   iOSBoilerplateQuestions,
-  androidBoilerplateQuestions
+  androidBoilerplateQuestions,
 };
