@@ -3,10 +3,9 @@ import path from 'path';
 // dialogs
 import BoilerplateDialog from '../dialogs/boilerplate_dialog';
 import DevelopmentCloneDialog from '../dialogs/development_clone_dialog';
-import LocalCloneDialog from '../dialogs/local_clone_dialog';
 import ReplaceVariablesDialog from '../dialogs/replace_variables_dialog';
 
-//utils
+// utils
 import Git from '../utils/git.js';
 
 export default class DevelopmentSurvey {
@@ -25,7 +24,7 @@ export default class DevelopmentSurvey {
 
     // git
     const git = new Git(this.answers, this.answers.localPath);
-    await git.setup({ development: true });
+    await git.setup();
 
     const replaceVariablesDialog = new ReplaceVariablesDialog(this.answers.projectName, this.answers.localPath);
     await replaceVariablesDialog.start();

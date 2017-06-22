@@ -13,10 +13,9 @@ class ApiService {
     this.username = answers.gitServiceUsername;
     this.password = answers.gitServicePassword;
     this.repoName = answers.projectName.toLowerCase();
-    this.repoDescription = answers.description;
-    console.log('@@@@@@@@@@@@@@@@@@@@@');
-    console.log('answers', answers);
-    console.log('@@@@@@@@@@@@@@@@@@@@@');
+    // this.repoDescription = answers.description;
+
+    const urlObject = url.parse(answers.gitService.api);
     this.service = {
       name: answers.gitService.name,
       protocol: urlObject.protocol,
@@ -73,7 +72,7 @@ export class GithubApiService extends ApiService {
   getRequestBody() {
     return {
       name: this.repoName,
-      description: this.repoDescription,
+      // description: this.repoDescription,
       private: false,
     };
   }

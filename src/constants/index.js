@@ -7,13 +7,7 @@ const projectTypes = [
     boilerPlates: [
       {
         name: 'Express',
-        repository: 'git@github.com:icapps/node-express-template.git',
-      }, {
-        name: 'Sails',
-        repository: 'git@bitbucket.org:samover/node-sails-template',
-      }, {
-        name: 'Keystone',
-        repository: 'git@bitbucket.org:samover/node-keystone-template',
+        repository: 'git@github.com:icapps/nodejs-express-template.git',
       },
     ],
   },

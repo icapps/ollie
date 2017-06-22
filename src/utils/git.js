@@ -7,23 +7,21 @@ import { createBitbucketApiService } from './../factories/apiServiceFactory';
 @autobind
 export default class Git {
   constructor(answers, localRepository) {
-    this.answers = answers;
-    this.name = answers.projectName;
     this.localRepository = localRepository;
-    // this.remoteRepository = null;
-    // this.apiService = createBitbucketApiService(this.answers);
   }
 
   async setup(options = { development: false }) {
     await this.initialize();
     await this.initialCommit();
 
-    // if (!dev) {
-    //   await this.createRemoteRepository();
-    //   await this.pushToRemote();
-    // }
     return Promise.resolve();
   }
+
+  // async setupRemote() {
+  //   await this.createRemoteRepository();
+  //   // await this.setRemote();
+  //   // await this.pushToRemote();
+  // }
 
   initialize() {
     return exec(`git -C ${this.localRepository} init`);
