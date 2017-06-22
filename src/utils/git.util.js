@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import autobind from 'autobind-decorator'
 import exec from './child-process-promise';
 import Spinner from './spinner';
-import { createBitbucketApiService } from './../factories/apiServiceFactory';
+import { createBitbucketApiService } from './../factories/api-service.factory';
 
 @autobind
 export default class Git {

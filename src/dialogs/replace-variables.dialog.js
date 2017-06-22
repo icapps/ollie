@@ -1,7 +1,7 @@
 import path from 'path';
 import _ from 'lodash';
 import inquirer from 'inquirer';
-import OllieHelpers from './../utils/ollie-utils';
+import OllieHelpers from './../utils/ollie.util';
 import seekAndReplace from './../utils/seek-and-replace';
 
 export default class ReplaceVariablesDialog {

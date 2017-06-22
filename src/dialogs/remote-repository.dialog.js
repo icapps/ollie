@@ -1,9 +1,9 @@
 import path from 'path';
 import _ from 'lodash';
 import inquirer from 'inquirer';
-import Git from './../utils/git';
+import Git from './../utils/git.util';
 import { providers  } from './../constants';
-import { createBitbucketApiService } from './../factories/apiServiceFactory';
+import { createBitbucketApiService } from './../factories/api-service.factory';
 
 export default class RemoteRepositoryDialog {
   constructor(projectName) {

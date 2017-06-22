@@ -1,7 +1,7 @@
 import path from 'path';
 import _ from 'lodash';
 import inquirer from 'inquirer';
-import Git from './../utils/git';
+import Git from './../utils/git.util';
 import fs from 'fs-extra';
 import exec from './../utils/child-process-promise';
 

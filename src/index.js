@@ -1,7 +1,7 @@
 import 'babel-polyfill';
 
 import program from 'commander';
-import Ollie from './Ollie';
+import Ollie from './ollie';
 import { projectTypes } from './constants';
 import surveys from './surveys';
 

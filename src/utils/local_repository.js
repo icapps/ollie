@@ -1,5 +1,5 @@
 import fs from 'fs-extra';
-import GitHandler from '../utils/gitHandler';
+import GitHandler from '../utils/git.util';
 
 export default class LocalRepository {
   constructor(path, name) {

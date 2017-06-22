@@ -3,7 +3,6 @@ import _ from 'lodash';
 import inquirer from 'inquirer';
 import exec from './../utils/child-process-promise';
 
-
 export default class DevelopmentCloneDialog {
   constructor(projectName) {
     this.projectName = projectName;

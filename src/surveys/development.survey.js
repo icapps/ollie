@@ -1,12 +1,12 @@
 import path from 'path';
 
 // dialogs
-import BoilerplateDialog from '../dialogs/boilerplate_dialog';
-import DevelopmentCloneDialog from '../dialogs/development_clone_dialog';
-import ReplaceVariablesDialog from '../dialogs/replace_variables_dialog';
+import BoilerplateDialog from '../dialogs/boilerplate.dialog';
+import DevelopmentCloneDialog from '../dialogs/development-clone.dialog';
+import ReplaceVariablesDialog from '../dialogs/replace-variables.dialog';
 
 // utils
-import Git from '../utils/git.js';
+import Git from '../utils/git.util.js';
 
 export default class DevelopmentSurvey {
   constructor() {
