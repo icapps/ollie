@@ -8,23 +8,32 @@ export default class DevelopmentCloneDialog {
   constructor(projectName) {
     this.projectName = projectName;
 
-    this.questions = {
-      name: 'templateLocationPath',
-      message: 'Please provide the path to your own project template',
-      type: 'string',
-    };
+    this.questions = [
+      {
+        name: 'templateLocationPath',
+        message: 'Please provide the path to your own project template',
+        type: 'string',
+      }, {
+        name: 'localPath',
+        message: 'Where would you like to store your new project?',
+        type: 'string',
+        default: process.cwd(),
+      }
+    ];
   }
 
-  start() {
-    return inquirer.prompt(this.questions)
-      .then((answers) => {
-        const localPath = this.projectName;
+  async start() {
+    const answers = await inquirer.prompt(this.questions)
+    const localPath = path.join(answers.localPath, this.projectName);
 
-        return exec(`cp -r ${answers.templateLocationPath} ${localPath}`)
-          .then(() =>
-            exec(`rm -rf ${path.join(localPath, '.git')}`)
-          )
-          .then(() => ({ localPath }));
-      });
+    // copy template into new path
+    await exec(`cp -r ${answers.templateLocationPath} ${localPath}`)
+
+    // remove .git/ directory
+    await exec(`rm -rf ${path.join(localPath, '.git')}`)
+
+    return { localPath };
   }
 }
+
+

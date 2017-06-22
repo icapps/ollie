@@ -8,23 +8,31 @@ export default class Ollie {
   constructor(options = {}) {
     this.projectTypes = options.projectTypes;
     this.surveys = options.surveys;
-    this.development = options.development || false;
+    this.development = options.development;
 
     this.welcome = () => {
     };
   }
 
-  start() {
+  async start() {
     this.printWelcome();
-    inquirer.prompt(this.openingQuestions())
-      .then(answers => this.startSurvey(answers));
+
+    const answeringAnswers = await inquirer.prompt(this.openingQuestions());
+    const surveyAnswers = await this.startSurvey(answeringAnswers);
+    const { localPath } = surveyAnswers;
+
+    this.printFinish(localPath);
   }
 
   printWelcome() {
-      // clear();
-      console.log(figlet.textSync('Ollie', 'Standard'));
-      console.log(chalk.blue('Hi there!'));
-      console.log(chalk.blue('Let\'s get you started with a project...'));
+    clear();
+    console.log(figlet.textSync('Ollie', 'Standard'));
+    console.log(chalk.blue('Hi there!'));
+    console.log(chalk.blue('Let\'s get you started with a project...'));
+  }
+
+  printFinish(localPath) {
+    console.log(chalk.blue(`Done, your new project is availlable at '${localPath}' 👏`));
   }
 
   openingQuestions() {
@@ -38,15 +46,10 @@ export default class Ollie {
     ];
   }
 
-  startSurvey(answers) {
+  async startSurvey(answers) {
     const project = _.find(this.projectTypes, { name: answers.projectType });
-    const Survey = this.surveys[project.survey];
-    const survey = new Survey();
-
-    if (this.development) {
-      return survey.startDevelopment();
-    }
-
+    const SurveyClass = this.surveys[project.survey];
+    const survey = new SurveyClass();
     return survey.start();
   }
 }

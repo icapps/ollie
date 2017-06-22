@@ -11,16 +11,10 @@ export default class ReplaceVariablesDialog {
     this.questions = [];
   }
 
-  start() {
-    return Promise.resolve()
-      .then(() => OllieHelpers.getConfig(this.path))
-      .then(ollieConfig => inquirer.prompt(ollieConfig.replacementQuestions))
-      .then((replacementAnswers) => {
-        console.log('@@@@@@@@@@@@@@@@@@@@@');
-        console.log('replacementAnswers', replacementAnswers);
-        console.log('@@@@@@@@@@@@@@@@@@@@@');
-        return seekAndReplace(this.projectName, replacementAnswers, this.path);
-      });
+  async start() {
+    const ollieConfig = await OllieHelpers.getConfig(this.path);
+    const replacementAnswers = await inquirer.prompt(ollieConfig.replacementQuestions || []);
+    return seekAndReplace(this.projectName, replacementAnswers, this.path);
   }
 }
 

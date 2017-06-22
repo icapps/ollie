@@ -16,17 +16,6 @@ const projectTypes = [
         repository: 'git@bitbucket.org:samover/node-keystone-template',
       },
     ],
-    providers: [
-      {
-        name: 'Bitbucket',
-        repository: 'bitbucket.org',
-        api: 'https://api.bitbucket.org/2.0',
-      }, {
-        name: 'Github',
-        repository: 'github.com',
-        api: 'https://api.github.com',
-      },
-    ],
   },
   {
     name: 'Android',
@@ -51,6 +40,24 @@ const projectTypes = [
       },
     ],
   },
+  {
+    name: 'Development',
+    survey: 'DevelopmentSurvey',
+    boilerPlates: [],
+  }
 ];
 
-export { projectTypes };
+const providers = [
+  {
+    name: 'Bitbucket',
+    repository: 'bitbucket.org',
+    api: 'https://api.bitbucket.org/2.0',
+  }, {
+    name: 'Github',
+    repository: 'github.com',
+    api: 'https://api.github.com',
+  },
+];
+
+export { projectTypes, providers };
+

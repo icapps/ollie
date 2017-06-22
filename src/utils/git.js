@@ -1,43 +1,54 @@
 import fs from 'fs-extra';
-// import exec from './child-process-promise';
+import autobind from 'autobind-decorator'
+import exec from './child-process-promise';
 import Spinner from './spinner';
-import * as apiServiceFactory from './../factories/apiServiceFactory';
+import { createBitbucketApiService } from './../factories/apiServiceFactory';
 
+@autobind
 export default class Git {
   constructor(answers, localRepository) {
     this.answers = answers;
     this.name = answers.projectName;
-    this.boilerplate = answers.boilerplate;
-
     this.localRepository = localRepository;
-    this.remoteRepository = null;
-    this.apiService = apiServiceFactory[`create${this.answers.gitService.name}ApiService`](this.answers);
+    // this.remoteRepository = null;
+    // this.apiService = createBitbucketApiService(this.answers);
   }
 
-  setRemote() {
-    return exec(`git -C ${this.localRepository.path} remote add origin ${this.remoteRepository}`);
+  async setup(options = { development: false }) {
+    await this.initialize();
+    await this.initialCommit();
+
+    // if (!dev) {
+    //   await this.createRemoteRepository();
+    //   await this.pushToRemote();
+    // }
+    return Promise.resolve();
   }
 
   initialize() {
-    return exec(`git -C ${this.localRepository.path} init`);
+    return exec(`git -C ${this.localRepository} init`);
   }
 
-  initialCommit() {
-    return Promise.resolve()
-      .then(() => exec(`git -C ${this.localRepository.path} add .`))
-      .then(() => exec(`git -C ${this.localRepository.path} commit -m 'initial commit'`));
+  async initialCommit(message = 'initial commit') {
+    await exec(`git -C ${this.localRepository} add .`);
+    return exec(`git -C ${this.localRepository} commit -m '${message}'`);
   }
 
-  createRemoteRepository() {
-    return this.apiService.createRepository()
-      .then(remoteRepositoryUrl => exec(`git -C ${this.localRepository.path} remote add origin ${remoteRepositoryUrl}`));
-  }
+  // setRemote() {
+  //   return exec(`git -C ${this.localRepository} remote add origin ${this.remoteRepository}`);
+  // }
 
-  pushToRemote() {
-    return exec(`git -C ${this.localRepository.path} push origin master`);
-  }
+  // async createRemoteRepository() {
+  //   const remoteRepositoryUrl = await this.apiService.createRepository();
+  //   return exec(`git -C ${this.localRepository} remote add origin ${remoteRepositoryUrl}`);
+  // }
+
+  // pushToRemote() {
+  //   return exec(`git -C ${this.localRepository} push origin master`);
+  // }
 
   static clone(repository, path) {
     return exec(`git clone ${repository} ${path} && rm -rf ${path}/.git`);
   }
 }
+

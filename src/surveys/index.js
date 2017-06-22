@@ -1,5 +1,9 @@
 import WebSurvey from './web_survey';
+import DevelopmentSurvey from './development_survey';
 // import IOSSurvey from './ios_survey';
 // import AndroidSurvey from './android_survey';
 
-export default { WebSurvey };
+export default {
+    WebSurvey,
+    DevelopmentSurvey
+};

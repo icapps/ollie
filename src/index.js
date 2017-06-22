@@ -1,3 +1,5 @@
+import 'babel-polyfill';
+
 import program from 'commander';
 import Ollie from './Ollie';
 import { projectTypes } from './constants';
@@ -13,11 +15,5 @@ const ollie = new Ollie({
   surveys,
   development: program.dev,
 });
-
-if (program.dev) {
-  console.log('-----------------------');
-  console.log('Run in development mode');
-  console.log('-----------------------');
-}
 
 ollie.start();
