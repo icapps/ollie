@@ -27,15 +27,10 @@ export default class DevelopmentSurvey {
     const git = new Git(this.answers, this.answers.localPath);
     await git.setup({ development: true });
 
-    // const replaceVariablesDialog = new ReplaceVariablesDialog(this.answers.projectName, this.answers.localPath);
-    // await replaceVariablesDialog.start();
-    //
-    // console.log('@@@@@@@@@@@@@@@@@@@@@');
-    // console.log('variables replace');
-    // console.log('@@@@@@@@@@@@@@@@@@@@@');
+    const replaceVariablesDialog = new ReplaceVariablesDialog(this.answers.projectName, this.answers.localPath);
+    await replaceVariablesDialog.start();
 
     return Promise.resolve(this.answers);
-    Promise
   }
 }
 
