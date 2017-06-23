@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/surveys/index.js"],"names":["WebSurvey","DevelopmentSurvey"],"mappings":";;;;;;AAAA;;;;AACA;;;;;;kBAEe;AACXA,4BADW;AAEXC;AAFW,C","file":"index.js","sourcesContent":["import WebSurvey from './web.survey';\nimport DevelopmentSurvey from './development.survey';\n\nexport default {\n    WebSurvey,\n    DevelopmentSurvey\n};\n"]}
