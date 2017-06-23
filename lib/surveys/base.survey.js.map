@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/surveys/base.survey.js"],"names":["SurveyTemplate","questions"],"mappings":";;;;;;;;;;IAAqBA,c;AACnB,0BAAYC,SAAZ,EAAuB;AACrB;;AADqB;AAEtB;;;;8BAES;AACR;AACD;;;;;;kBAPkBD,c","file":"base.survey.js","sourcesContent":["export default class SurveyTemplate {\n  constructor(questions) {\n    // ...\n  }\n\n  process() {\n    // ...\n  }\n}\n"]}
