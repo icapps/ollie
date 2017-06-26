@@ -12,6 +12,16 @@ const projectTypes = [
     ],
   },
   {
+    name: 'Frontend',
+    survey: 'FrontendSurvey',
+    boilerPlates: [
+      {
+        name: 'React',
+        repository: 'git@github.com:icapps/react-sagas-template.git',
+      },
+    ],
+  },
+  {
     name: 'Android',
     survey: 'AndroidSurvey',
     boilerPlates: [

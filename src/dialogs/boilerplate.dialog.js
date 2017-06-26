@@ -2,31 +2,39 @@ import _ from 'lodash';
 import inquirer from 'inquirer';
 import { projectTypes } from './../constants';
 
-const webProject = _.find(projectTypes, { name: 'Backend' });
+const backendProject = _.find(projectTypes, { name: 'Backend' });
+const frontendProject = _.find(projectTypes, { name: 'Frontend' });
 const iOSProject = _.find(projectTypes, { name: 'iOS' });
 const androidProject = _.find(projectTypes, { name: 'Android' });
 
 const questions = {
   backend: {
     name: 'boilerplate',
-    message: 'So you are a Backend developer, tell me what kind of web application you would like to generate?',
+    message: 'So you are a backend dev, what kind are you today?',
     type: 'list',
-    choices: _.map(webProject.boilerPlates, 'name'),
-    filter: answer => _.find(webProject.boilerPlates, { name: answer }),
+    choices: _.map(backendProject.boilerPlates, 'name'),
+    filter: answer => _.find(backendProject.boilerPlates, { name: answer }),
+  },
+  frontend: {
+    name: 'boilerplate',
+    message: 'So you are a frontend developer, tell me what kind of web application you would like to generate?',
+    type: 'list',
+    choices: _.map(frontendProject.boilerPlates, 'name'),
+    filter: answer => _.find(frontendProject.boilerPlates, { name: answer }),
   },
   ios: {
     name: 'boilerplate',
     message: 'So you are an IOS developer, tell me what kind you are.',
     type: 'list',
     choices: _.map(iOSProject.boilerPlates, 'name'),
-    filter: answer => _.find(iOSProject.boilerPlates, { name: answer }),
+    filter: answer => _.find(IOSProject.boilerPlates, { name: answer }),
   },
   android: {
     name: 'boilerplate',
     message: 'So you are an Android developer, tell me what kind you are.',
     type: 'list',
     choices: _.map(androidProject.boilerPlates, 'name'),
-    filter: answer => _.find(androidProject.boilerPlates, { name: answer }),
+    filter: answer => _.find(AndroidProject.boilerPlates, { name: answer }),
   },
 };
 
