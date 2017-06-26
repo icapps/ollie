@@ -2,14 +2,14 @@ import _ from 'lodash';
 import inquirer from 'inquirer';
 import { projectTypes } from './../constants';
 
-const webProject = _.find(projectTypes, { name: 'Web' });
+const webProject = _.find(projectTypes, { name: 'Backend' });
 const iOSProject = _.find(projectTypes, { name: 'iOS' });
 const androidProject = _.find(projectTypes, { name: 'Android' });
 
 const questions = {
-  web: {
+  backend: {
     name: 'boilerplate',
-    message: 'So you are a Web developer, tell me what kind of web application you would like to generate?',
+    message: 'So you are a Backend developer, tell me what kind of web application you would like to generate?',
     type: 'list',
     choices: _.map(webProject.boilerPlates, 'name'),
     filter: answer => _.find(webProject.boilerPlates, { name: answer }),

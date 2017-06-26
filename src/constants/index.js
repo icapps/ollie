@@ -2,8 +2,8 @@
 
 const projectTypes = [
   {
-    name: 'Web',
-    survey: 'WebSurvey',
+    name: 'Backend',
+    survey: 'BackendSurvey',
     boilerPlates: [
       {
         name: 'Express',
