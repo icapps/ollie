@@ -1,9 +1,8 @@
-export default class IOSSurvey {
-  constructor() {
-  }
+import BaseSurvey from '../surveys/base.survey';
 
-  process(answers) {
-    console.log('iOS not yet implemented');
-    throw new Error('(;*△*;)');
+export default class IOSSurvey extends BaseSurvey {
+  constructor(...args) {
+    super(args);
+    this.type = 'iOS';
   }
 }

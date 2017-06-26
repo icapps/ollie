@@ -7,9 +7,9 @@
     "node": ">=6"
   },
   "scripts": {
-    "clean": "rm -rf lib && mkdir lib",
-    "build": "npm run clean; babel --source-maps --ignore node_modules,.git -d ./lib ./src",
-    "build:watch": "npm run clean; babel -w --source-maps --ignore node_modules,.git -d ./lib ./src",
+    "cleanup": "rm -rf lib && mkdir lib",
+    "build": "npm run cleanup; babel --source-maps --ignore node_modules,.git -d ./lib ./src",
+    "build:watch": "npm run cleanup; babel -w --source-maps --ignore node_modules,.git -d ./lib ./src",
     "prepublish": "npm run build",
     "start": "node ./lib/index.js",
     "start:dev": "babel-node --inspect ./src",

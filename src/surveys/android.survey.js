@@ -1,10 +1,8 @@
-export default class AndroidSurvey {
-  constructor() {
-    // ...
-  }
+import BaseSurvey from '../surveys/base.survey';
 
-  process(answers) {
-    console.log('Android not yet implemented');
-    throw new Error('(;*△*;)');
+export default class AndroidSurvey extends BaseSurvey {
+  constructor(...args) {
+    super(args);
+    this.type = 'android';
   }
 }

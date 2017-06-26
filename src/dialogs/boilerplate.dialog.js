@@ -9,7 +9,7 @@ const androidProject = _.find(projectTypes, { name: 'Android' });
 const questions = {
   web: {
     name: 'boilerplate',
-    message: 'So you are a web developer, tell me what kind of web application you would like to generate?',
+    message: 'So you are a Web developer, tell me what kind of web application you would like to generate?',
     type: 'list',
     choices: _.map(webProject.boilerPlates, 'name'),
     filter: answer => _.find(webProject.boilerPlates, { name: answer }),
@@ -19,14 +19,14 @@ const questions = {
     message: 'So you are an IOS developer, tell me what kind you are.',
     type: 'list',
     choices: _.map(iOSProject.boilerPlates, 'name'),
-    filter: answer => _.find(IOSProject.boilerPlates, { name: answer }),
+    filter: answer => _.find(iOSProject.boilerPlates, { name: answer }),
   },
   android: {
     name: 'boilerplate',
     message: 'So you are an Android developer, tell me what kind you are.',
     type: 'list',
     choices: _.map(androidProject.boilerPlates, 'name'),
-    filter: answer => _.find(AndroidProject.boilerPlates, { name: answer }),
+    filter: answer => _.find(androidProject.boilerPlates, { name: answer }),
   },
 };
 
@@ -42,7 +42,7 @@ export default class BoilerplateDialog {
   constructor(type) {
     this.questions = _.concat(
       [],
-      this._getQuestionsForType(questions, type),
+      this._getQuestionsForType(questions, type.toLowerCase()),
       generalQuestions
     );
   }
