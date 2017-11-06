@@ -16,9 +16,13 @@ const projectTypes = [
     survey: 'FrontendSurvey',
     boilerPlates: [
       {
-        name: 'React',
+        name: 'React (redux-thunk)',
+        repository: 'git@github.com:icapps/react-thunk-template.git',
+      }, {
+        name: 'React (redux-sagas)',
         repository: 'git@github.com:icapps/react-sagas-template.git',
       },
+
     ],
   },
   {
