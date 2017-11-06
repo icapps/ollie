@@ -19,7 +19,7 @@ Ollie will guide you through the generation of your new project by asking questi
 Install the binary to make ollie availlable in your cli.
 
 ```bash
-$ npm install --global ollie
+$ npm install --global ollie-cli
 ```
 
 To push a project to Bitbucket, be sure to add your machine's ssh key to your Bitbucket account.  
