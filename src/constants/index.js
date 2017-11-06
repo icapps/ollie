@@ -22,7 +22,6 @@ const projectTypes = [
         name: 'React (redux-sagas)',
         repository: 'git@github.com:icapps/react-sagas-template.git',
       },
-
     ],
   },
   {
