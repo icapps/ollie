@@ -25,6 +25,16 @@ const projectTypes = [
     ],
   },
   {
+    name: 'React Native',
+    survey: 'ReactNativeSurvey',
+    boilerPlates: [
+      {
+        name: 'React Native with redux-thunk',
+        repository: 'git@github.com:icapps/react-native-template.git',
+      }
+    ],
+  },
+  {
     name: 'Android',
     survey: 'AndroidSurvey',
     boilerPlates: [

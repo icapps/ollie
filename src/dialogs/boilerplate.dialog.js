@@ -4,6 +4,7 @@ import { projectTypes } from './../constants';
 
 const backendProject = _.find(projectTypes, { name: 'Backend' });
 const frontendProject = _.find(projectTypes, { name: 'Frontend' });
+const reactNativeProject = _.find(projectTypes, { name: 'React Native' });
 const iOSProject = _.find(projectTypes, { name: 'iOS' });
 const androidProject = _.find(projectTypes, { name: 'Android' });
 
@@ -21,6 +22,13 @@ const questions = {
     type: 'list',
     choices: _.map(frontendProject.boilerPlates, 'name'),
     filter: answer => _.find(frontendProject.boilerPlates, { name: answer }),
+  },
+  reactnative: {
+    name: 'boilerplate',
+    message: 'So you are a React Native developer, tell me what kind of React Native application you would like to generate?',
+    type: 'list',
+    choices: _.map(reactNativeProject.boilerPlates, 'name'),
+    filter: answer => _.find(reactNativeProject.boilerPlates, { name: answer }),
   },
   ios: {
     name: 'boilerplate',
