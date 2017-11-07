@@ -23,7 +23,7 @@ export default class Git {
   //   // await this.pushToRemote();
   // }
 
-  async initialize() {
+  initialize() {
     return exec(`git -C "${this.localRepository}" init`);
   }
 
@@ -45,7 +45,7 @@ export default class Git {
   //   return exec(`git -C "${this.localRepository}" push origin master`);
   // }
 
-  static async clone(repository, path) {
+  static clone(repository, path) {
     return exec(`git clone ${repository} "${path}" && rm -rf "${path}/.git"`);
   }
 }
