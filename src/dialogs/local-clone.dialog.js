@@ -20,7 +20,7 @@ export default class LocalCloneDialog {
 
   async start() {
     const answers = await inquirer.prompt(this.questions)
-    const clonePath = path.join(answers.localPath, this.name);//.replace(/(\s+)/g, '\\$1');
+    const clonePath = path.join(answers.localPath, this.name);
 
     if (await fs.pathExistsSync(clonePath)) {
       throw new Error('Couldn\'t clone repository, this path already exists:', clonePath);
