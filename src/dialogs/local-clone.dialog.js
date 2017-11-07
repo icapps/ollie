@@ -26,11 +26,8 @@ export default class LocalCloneDialog {
       throw new Error('Couldn\'t clone repository, this path already exists:', clonePath);
     }
 
-    // clone repository into clone path
+    // clone repository into clone path (clone command also removes .git folder)
     await Git.clone(this.repository, clonePath)
-
-    // remove .git directory
-    await exec(`rm -rf ${path.join(clonePath, '.git')}`)
 
     return {
       localPath: clonePath,

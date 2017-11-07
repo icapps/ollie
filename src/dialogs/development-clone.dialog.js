@@ -26,10 +26,10 @@ export default class DevelopmentCloneDialog {
     const localPath = path.join(answers.localPath, this.projectName);
 
     // copy template into new path
-    await exec(`cp -r ${answers.templateLocationPath} ${localPath}`)
+    await exec(`cp -r "${answers.templateLocationPath}" "${localPath}"`)
 
     // remove .git/ directory
-    await exec(`rm -rf ${path.join(localPath, '.git')}`)
+    await exec(`rm -rf "${path.join(localPath, '.git')}"`)
 
     return { localPath };
   }
