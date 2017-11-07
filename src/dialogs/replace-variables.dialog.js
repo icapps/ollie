@@ -16,6 +16,7 @@ export default class ReplaceVariablesDialog {
     const ollieConfig = await OllieHelpers.getConfig(this.path);
     const replacementAnswers = await inquirer.prompt(ollieConfig.replacementQuestions || []);
     const result = await seekAndReplace(this.projectName, replacementAnswers, this.path);
+    
     // Remove ollie.yml file from project
     await exec(`rm -f "${path.join(this.path, 'ollie.yml')}"`)
     return result;
