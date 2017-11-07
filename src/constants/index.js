@@ -21,17 +21,10 @@ const projectTypes = [
       }, {
         name: 'React (redux-sagas)',
         repository: 'git@github.com:icapps/react-sagas-template.git',
-      },
-    ],
-  },
-  {
-    name: 'React Native',
-    survey: 'ReactNativeSurvey',
-    boilerPlates: [
-      {
-        name: 'React Native with redux-thunk',
+      }, {
+        name: 'React Native (redux-thunk)',
         repository: 'git@github.com:icapps/react-native-template.git',
-      }
+      },
     ],
   },
   {
