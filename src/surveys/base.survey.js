@@ -26,7 +26,7 @@ export default class BaseSurvey {
 
     const replaceVariablesDialog = new ReplaceVariablesDialog(this.answers.projectName, this.answers.localPath);
     await replaceVariablesDialog.start();
-    
+
     // git
     const git = new Git(this.answers, this.answers.localPath);
     await git.setup();
@@ -34,7 +34,6 @@ export default class BaseSurvey {
     // // remote git repository (Bitbucket / Github)
     // const remoteRepoDialog = new RemoteRepositoryDialog(this.answers.projectName);
     // const remoteRepoAnswers = await remoteRepoDialog.start();
-
 
     return Promise.resolve(this.answers);
   }
