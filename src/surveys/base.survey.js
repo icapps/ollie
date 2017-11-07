@@ -24,6 +24,9 @@ export default class BaseSurvey {
     const cloneAnswers = await cloneDialog.start();
     this.answers.localPath = cloneAnswers.localPath;
 
+    const replaceVariablesDialog = new ReplaceVariablesDialog(this.answers.projectName, this.answers.localPath);
+    await replaceVariablesDialog.start();
+    
     // git
     const git = new Git(this.answers, this.answers.localPath);
     await git.setup();
@@ -32,8 +35,6 @@ export default class BaseSurvey {
     // const remoteRepoDialog = new RemoteRepositoryDialog(this.answers.projectName);
     // const remoteRepoAnswers = await remoteRepoDialog.start();
 
-    const replaceVariablesDialog = new ReplaceVariablesDialog(this.answers.projectName, this.answers.localPath);
-    await replaceVariablesDialog.start();
 
     return Promise.resolve(this.answers);
   }
