@@ -86,3 +86,25 @@ Surveys are responsible for composing questions in the correct order. Depending 
 Questions must always return question objects (or an array of objects). These question objects must following the [Inquirer](https://github.com/sboudrias/Inquirer.js) questions API.
 
 
+## Username and password
+
+Because we use 2 factor authentication we need to create an application password for github and bitbucket. You will be prompted for this password after selecting the "Which service do you wish to use?" [Bitbucket/Github]
+
+#### Github
+https://github.com/settings/tokens
+
+Click 'Generate new token'
+
+Give the app password a name and Full control of private repositories.
+
+#### Bitbucket
+
+To create an app password:
+
+https://bitbucket.org/account/admin/app-passwords?_ga=2.50414570.230190807.1520934793-39132024.1503226089
+
+Click 'create app password'
+
+Give the app password a name and write permissions on Repo's and Projects.
+
+

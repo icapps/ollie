@@ -3,7 +3,6 @@ import path from 'path';
 // dialogs
 import BoilerplateDialog from '../dialogs/boilerplate.dialog';
 import LocalCloneDialog from '../dialogs/local-clone.dialog';
-import RemoteRepositoryDialog from '../dialogs/remote-repository.dialog';
 import ReplaceVariablesDialog from '../dialogs/replace-variables.dialog';
 
 // utils
@@ -30,10 +29,6 @@ export default class BaseSurvey {
     // git
     const git = new Git(this.answers, this.answers.localPath);
     await git.setup();
-
-    // // remote git repository (Bitbucket / Github)
-    // const remoteRepoDialog = new RemoteRepositoryDialog(this.answers.projectName);
-    // const remoteRepoAnswers = await remoteRepoDialog.start();
 
     return Promise.resolve(this.answers);
   }
