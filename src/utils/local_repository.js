@@ -19,7 +19,6 @@ export default class LocalRepository {
       resolve();
     });
 
-    // const gitHandler = new GitHandler(answers, localRepository);
     GitHandler.clone(repository, this.path);
   }
 }

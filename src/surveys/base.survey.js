@@ -16,6 +16,7 @@ export default class BaseSurvey {
   async start() {
     const boilerplateDialog = new BoilerplateDialog(this.type);
     const boilerplateAnswers = await boilerplateDialog.start();
+
     this.answers.projectName = boilerplateAnswers.projectName;
     this.answers.boilerplateRepository = boilerplateAnswers.boilerplate.repository;
 
@@ -27,9 +28,8 @@ export default class BaseSurvey {
     await replaceVariablesDialog.start();
 
     // git
-    const git = new Git(this.answers, this.answers.localPath);
+    const git = new Git(this.answers);
     await git.setup();
-
     return Promise.resolve(this.answers);
   }
 }

@@ -6,8 +6,8 @@ import { createBitbucketApiService } from './../factories/api-service.factory';
 import RemoteRepositoryDialog from './../dialogs/remote-repository.dialog';
 
 export default class Git {
-  constructor(answers, localRepository) {
-    this.localRepository = localRepository;
+  constructor(answers) {
+    this.localRepository = answers.localPath;
     this.answers = answers;
   }
 
@@ -34,7 +34,7 @@ export default class Git {
   }
 
   async createRemoteRepository() {
-    // // remote git repository (Bitbucket / Github)
+    // remote git repository (Bitbucket / Github)
     const remoteRepoDialog = new RemoteRepositoryDialog(this.answers.projectName);
     const remoteRepositoryUrl = await remoteRepoDialog.start();
     exec(`git -C "${this.localRepository}" remote add origin ${remoteRepositoryUrl}`)

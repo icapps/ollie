@@ -41,12 +41,7 @@ export default class RemoteRepositoryDialog {
     };
 
     this.apiService = serviceFactory[apiServiceOptions.gitService.name](apiServiceOptions);
-    try {
-      const remoteRepositoryUrl = await this.apiService.createRepository();
-      return remoteRepositoryUrl;
-    } catch (e) {
-      console.log('create remote repo error: ', e);
-    }
+    return await this.apiService.createRepository();
   }
 }
 

@@ -34,7 +34,10 @@ class ApiService {
   }
 
   getHeaders(){
-    return { authorization: 'Basic ' + new Buffer(this.username + ':' + this.password).toString('base64'), 'User-Agent': 'request' }
+    return { 
+      authorization: 'Basic ' + new Buffer(this.username + ':' + this.password).toString('base64'),
+      'User-Agent': 'request' 
+    }
   }
 
   getRemoteRepo() {
@@ -59,8 +62,8 @@ class ApiService {
         headers: this.getHeaders(),
       };
       request(options, (error, response, body) => {
-        if (!error && response.statusCode < 400) resolve(this.getRemoteRepo());
-        else reject(error || new ApiServiceError(body.error));
+        if (!error && response.statusCode < 300) resolve(this.getRemoteRepo());
+        else reject(error || new ApiServiceError(body));
       });
     });
   }
