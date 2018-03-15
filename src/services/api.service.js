@@ -38,7 +38,7 @@ class ApiService {
   }
 
   getRemoteRepo() {
-    return `git@${this.service.remote}:${this.username}/${this.repoName}.git`;
+    return `git@${this.service.remote}:icapps/${this.repoName}.git`;
   }
 
   getErrorObject(body, requestOptions) {
@@ -75,7 +75,7 @@ export class GithubApiService extends ApiService {
   }
 
   getRequestUrl() {
-    return 'https://api.github.com/user/repos';
+    return 'https://api.github.com/orgs/icapps/repos';
   }
 
 }
@@ -89,6 +89,6 @@ export class BitBucketApiService extends ApiService {
   }
 
   getRequestUrl() {
-    return 'https://api.bitbucket.org/1.0/repositories/'
+    return `https://api.bitbucket.org/2.0/repositories/icapps/${this.repoName}`
   }
 }
