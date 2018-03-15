@@ -1,8 +1,0 @@
-replacementQuestions:
-  - name: NAME
-    message: Name
-  - name:   DESCRIPTION
-    message: Description
-  # - name: CONTRIBUTORS
-  #   message: Contributors
-  #   # TODO: check if an array is possible
