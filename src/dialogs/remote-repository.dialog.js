@@ -3,7 +3,7 @@ import _ from 'lodash';
 import inquirer from 'inquirer';
 import Git from './../utils/git.util';
 import { providers  } from './../constants';
-import { createBitbucketApiService } from './../factories/api-service.factory';
+import serviceFactory from './../factories/api-service.factory';
 
 export default class RemoteRepositoryDialog {
   constructor(projectName) {
@@ -40,18 +40,8 @@ export default class RemoteRepositoryDialog {
       gitServicePassword: answers.gitServicePassword
     };
 
-    this.apiService = createBitbucketApiService(apiServiceOptions);
-    try {
-      const remoteRepositoryUrl = await this.apiService.createRepository();
-      console.log('@@@@@@@@@@@@@@@@@@@@@');
-      console.log('remoteRepositoryUrl', remoteRepositoryUrl);
-      console.log('@@@@@@@@@@@@@@@@@@@@@');
-    } catch (e) {
-      /* handle error */
-      console.log('@@@@@@@@@@@@@@@@@@@@@');
-      console.log('e', e);
-      console.log('@@@@@@@@@@@@@@@@@@@@@');
-    }
+    this.apiService = serviceFactory[apiServiceOptions.gitService.name](apiServiceOptions);
+    return await this.apiService.createRepository();
   }
 }
 

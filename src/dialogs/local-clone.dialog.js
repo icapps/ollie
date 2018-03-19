@@ -25,7 +25,6 @@ export default class LocalCloneDialog {
     if (await fs.pathExistsSync(clonePath)) {
       throw new Error('Couldn\'t clone repository, this path already exists:', clonePath);
     }
-
     // clone repository into clone path (clone command also removes .git folder)
     await Git.clone(this.repository, clonePath)
 

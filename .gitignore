@@ -6,3 +6,6 @@ npm-debug.log
 .idea
 .eslintcache
 
+#build
+lib
+
