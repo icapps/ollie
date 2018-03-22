@@ -1,4 +1,4 @@
-const projectTypes = require('./../src/constants').projectTypes;
+const { projectTypes } = require('./../src/constants');
 
 describe('Project Types', () => {
   it('should have a Survey for every ProjectType', () => {

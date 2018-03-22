@@ -54,7 +54,7 @@ const projectTypes = [
     name: 'Development',
     survey: 'DevelopmentSurvey',
     boilerPlates: [],
-  }
+  },
 ];
 
 const providers = [

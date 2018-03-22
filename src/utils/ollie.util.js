@@ -3,7 +3,6 @@ import path from 'path';
 import yaml from 'js-yaml';
 
 export default class OllieHelpers {
-
   static async getConfig(projectPath) {
     const configPath = path.join(projectPath, 'ollie.yml');
 
