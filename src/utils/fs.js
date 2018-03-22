@@ -7,9 +7,8 @@ export default class Fs {
     } catch (e) {
       if (e.code === 'ENOENT') {
         return false;
-      } else {
-        throw e;
       }
+      throw e;
     }
   }
 }

@@ -15,13 +15,15 @@ export default class Ollie {
   }
 
   async start() {
-    this.printWelcome();
-
-    const answeringAnswers = await inquirer.prompt(this.openingQuestions());
-    const surveyAnswers = await this.startSurvey(answeringAnswers);
-    const { localPath } = surveyAnswers;
-
-    this.printFinish(localPath);
+    try {
+      this.printWelcome();
+      const answeringAnswers = await inquirer.prompt(this.openingQuestions());
+      const surveyAnswers = await this.startSurvey(answeringAnswers);
+      const { localPath } = surveyAnswers;
+      this.printFinish(localPath);
+    } catch (error) {
+      console.log(chalk.red(`Error: ${error}`));
+    }
   }
 
   printWelcome() {
@@ -46,7 +48,7 @@ export default class Ollie {
     ];
   }
 
-  async startSurvey(answers) {
+  startSurvey(answers) {
     const project = _.find(this.projectTypes, { name: answers.projectType });
     const SurveyClass = this.surveys[project.survey];
     const survey = new SurveyClass();
