@@ -1,8 +1,4 @@
-import fs from 'fs-extra';
-import autobind from 'autobind-decorator'
 import exec from './child-process-promise';
-import Spinner from './spinner';
-import { createBitbucketApiService } from './../factories/api-service.factory';
 import RemoteRepositoryDialog from './../dialogs/remote-repository.dialog';
 
 export default class Git {
@@ -11,7 +7,7 @@ export default class Git {
     this.answers = answers;
   }
 
-  async setup(options = { development: false }) {
+  async setup() {
     await this.initialize();
     await this.initialCommit();
     await this.setupRemote();
@@ -37,7 +33,7 @@ export default class Git {
     // remote git repository (Bitbucket / Github)
     const remoteRepoDialog = new RemoteRepositoryDialog(this.answers.projectName);
     const remoteRepositoryUrl = await remoteRepoDialog.start();
-    exec(`git -C "${this.localRepository}" remote add origin ${remoteRepositoryUrl}`)
+    exec(`git -C "${this.localRepository}" remote add origin ${remoteRepositoryUrl}`);
   }
 
   pushToRemote() {

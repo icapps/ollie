@@ -1,12 +1,10 @@
-import path from 'path';
-
 // dialogs
 import BoilerplateDialog from '../dialogs/boilerplate.dialog';
 import LocalCloneDialog from '../dialogs/local-clone.dialog';
 import ReplaceVariablesDialog from '../dialogs/replace-variables.dialog';
 
 // utils
-import Git from '../utils/git.util.js';
+import Git from '../utils/git.util';
 
 export default class BaseSurvey {
   constructor() {

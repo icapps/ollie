@@ -33,11 +33,11 @@ class ApiService {
     throw Error('Implement in ApiService implementation');
   }
 
-  getHeaders(){
-    return { 
-      authorization: 'Basic ' + new Buffer(this.username + ':' + this.password).toString('base64'),
-      'User-Agent': 'request' 
-    }
+  getHeaders() {
+    return {
+      authorization: `Basic ${Buffer.from(`${this.username}:${this.password}}`).toString('base64')}`,
+      'User-Agent': 'request',
+    };
   }
 
   getRemoteRepo() {
@@ -80,7 +80,6 @@ export class GithubApiService extends ApiService {
   getRequestUrl() {
     return 'https://api.github.com/orgs/icapps/repos';
   }
-
 }
 
 export class BitBucketApiService extends ApiService {
@@ -92,6 +91,6 @@ export class BitBucketApiService extends ApiService {
   }
 
   getRequestUrl() {
-    return `https://api.bitbucket.org/2.0/repositories/icapps/${this.repoName}`
+    return `https://api.bitbucket.org/2.0/repositories/icapps/${this.repoName}`;
   }
 }

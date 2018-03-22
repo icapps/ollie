@@ -1,59 +1,61 @@
 {
   "name": "ollie-cli",
-  "version": "0.0.5",
+  "version": "1.0.0",
   "description": "Project boilerplate servant",
-  "main": "index.js",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "yarn clean; babel --source-maps --ignore node_modules,.git -d ./build ./src",
+    "build:watch": "yarn clean; babel -w --source-maps --ignore node_modules,.git -d ./build ./src",
+    "start": "node ./build/index.js",
+    "start:dev": "babel-node --inspect ./src",
+    "serve": "yarn build && yarn start",
+    "lint": "eslint ./ --cache --config ./.eslintrc --ignore-pattern .gitignore",
+    "clean": "rimraf ./build",
+    "prepublish": "yarn build",
+    "test": "jest --forceExit",
+    "test:coverage": "jest --coverage --collectCoverageFrom=src/**/*.js --forceExit",
+    "test:watch": "jest --watchAll"
+  },
+  "precommit": [
+    "lint"
+  ],
+  "bin": {
+    "ollie": "./build/index.js"
+  },
+  "author": "iCapps <info@icapps.com>",
+  "license": "ISC",
   "engines": {
     "node": ">=6"
   },
-  "scripts": {
-    "cleanup": "rm -rf lib && mkdir lib",
-    "build": "npm run cleanup; babel --source-maps --ignore node_modules,.git -d ./lib ./src",
-    "build:watch": "npm run cleanup; babel -w --source-maps --ignore node_modules,.git -d ./lib ./src",
-    "prepublish": "npm run build",
-    "start": "node ./lib/index.js",
-    "start:dev": "babel-node --inspect ./src",
-    "lint": "eslint ./ --cache --config ./.eslintrc --ignore-pattern .gitignore",
-    "test": "jest src"
+  "directories": {
+    "test": "tests"
   },
-  "bin": {
-    "ollie": "./lib/index.js"
-  },
-  "author": "iCapps",
-  "license": "ISC",
   "dependencies": {
-    "autobind-decorator": "^1.4.1",
-    "babel-polyfill": "^6.23.0",
-    "chalk": "^1.1.3",
-    "clear": "0.0.1",
-    "cli-spinner": "^0.2.5",
-    "clui": "^0.3.1",
-    "commander": "^2.9.0",
-    "figlet": "^1.1.2",
-    "fs-extra": "^3.0.1",
-    "github": "^3.1.0",
-    "inquirer": "^1.1.3",
-    "js-yaml": "^3.8.1",
-    "lodash": "^4.16.2",
-    "minimist": "^1.2.0",
-    "preferences": "^0.2.1",
-    "request": "^2.76.0",
-    "seek-and-replace": "^1.0.4"
+    "babel-polyfill": "~6.26.0",
+    "chalk": "~2.3.2",
+    "clear": "~0.1.0",
+    "commander": "~2.15.1",
+    "figlet": "~1.2.0",
+    "fs-extra": "~5.0.0",
+    "inquirer": "~5.1.0",
+    "js-yaml": "~3.11.0",
+    "lodash": "~4.17.5",
+    "request": "~2.85.0",
+    "seek-and-replace": "~1.0.4"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
-    "babel-eslint": "^7.0.0",
+    "babel-eslint": "^8.2.2",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-latest": "^6.24.1",
-    "chai": "^3.5.0",
-    "chai-things": "^0.2.0",
-    "chokidar": "^1.7.0",
-    "eslint": "^3.6.1",
-    "eslint-config-airbnb-base": "^8.0.0",
-    "eslint-plugin-import": "^1.16.0",
-    "eslint-plugin-node": "^2.1.1",
-    "jest": "^20.0.4",
-    "pre-commit": "^1.1.3"
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-mocha": "^4.12.1",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "jest": "^22.4.3",
+    "pre-commit": "^1.2.2"
   }
 }

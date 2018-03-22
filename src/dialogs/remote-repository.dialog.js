@@ -1,8 +1,6 @@
-import path from 'path';
 import _ from 'lodash';
 import inquirer from 'inquirer';
-import Git from './../utils/git.util';
-import { providers  } from './../constants';
+import { providers } from './../constants';
 import serviceFactory from './../factories/api-service.factory';
 
 export default class RemoteRepositoryDialog {
@@ -19,7 +17,8 @@ export default class RemoteRepositoryDialog {
       },
       {
         name: 'gitServiceUsername',
-        message: answers => `We noticed you didn't enter any ${answers.gitService.name} credentials, would you mind giving me your ${answers.gitService.name} username?`,
+        message: answers => `We noticed you didn't enter any ${answers.gitService.name} credentials,
+        would you mind giving me your ${answers.gitService.name} username?`,
         type: 'string',
       },
       {
@@ -27,21 +26,21 @@ export default class RemoteRepositoryDialog {
         message: 'And now you password? Don\'t worry, I won\'t tell anyone...',
         type: 'password',
       },
-    ]
+    ];
   }
 
   async start() {
-    const answers = await inquirer.prompt(this.questions)
+    const answers = await inquirer.prompt(this.questions);
 
     const apiServiceOptions = {
       gitService: answers.gitService,
       projectName: this.projectName,
       gitServiceUsername: answers.gitServiceUsername,
-      gitServicePassword: answers.gitServicePassword
+      gitServicePassword: answers.gitServicePassword,
     };
 
     this.apiService = serviceFactory[apiServiceOptions.gitService.name](apiServiceOptions);
-    return await this.apiService.createRepository();
+    return this.apiService.createRepository();
   }
 }
 

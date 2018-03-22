@@ -1,11 +1,37 @@
-# Created by .ignore support plugin (hsz.mobi)
-node_modules
-npm-debug.log
+# Build folder output
+build
 
-# Webstorm
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Coverage directory used by tools like istanbul
+coverage
+
+# nyc test coverage
+.nyc_output
+
+# Compiled binary addons (http://nodejs.org/api/addons.html)
+build/Release
+
+# Dependency directories
+node_modules
+
+# Editor
 .idea
+.vscode
+
+# NPM
+.npm
+package-lock.json
+
+## Eslint
 .eslintcache
 
-#build
-lib
+# Yarn
+.yarnclean
+yarn-error.log
 
+# Environment variables
+.env

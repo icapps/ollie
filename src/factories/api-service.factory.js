@@ -6,4 +6,4 @@ const createBitbucketApiService = answers => new apiServices.BitBucketApiService
 export default {
   Github: createGithubApiService,
   Bitbucket: createBitbucketApiService,
-}
+};
