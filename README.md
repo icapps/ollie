@@ -2,8 +2,8 @@
 
 A project generation helper for web, android and ios projects.
 
-[![npm version](https://badge.fury.io/js/ollie.svg)](https://badge.fury.io/js/tree-house)
-[![Dependencies](https://david-dm.org/icapps/ollie.svg)](https://david-dm.org/icapps/tree-house.svg)
+[![npm version](https://badge.fury.io/js/ollie.svg)](https://badge.fury.io/js/ollie)
+[![Dependencies](https://david-dm.org/icapps/ollie.svg)](https://david-dm.org/icapps/ollie.svg)
 
 ## Usage
 
