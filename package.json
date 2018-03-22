@@ -16,6 +16,9 @@
     "test:coverage": "jest --coverage --collectCoverageFrom=src/**/*.js --forceExit",
     "test:watch": "jest --watchAll"
   },
+  "precommit": [
+    "lint"
+  ],
   "bin": {
     "ollie": "./build/index.js"
   },
