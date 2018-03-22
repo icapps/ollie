@@ -1,16 +1,14 @@
-import chai from 'chai';
-import chaiThings from 'chai-things';
-
-chai.use(chaiThings);
-const expect = chai.expect;
-
 const projectTypes = require('./../src/constants').projectTypes;
 
 describe('Project Types', () => {
   it('should have a Survey for every ProjectType', () => {
-    expect(projectTypes).to.all.have.property('survey');
+    expect.assertions(projectTypes.length);
+    projectTypes.forEach((type) => {
+      expect(type).toHaveProperty('survey');
+    });
   });
+
   it('should have a survey function for every ProjectType', () => {
-    expect(projectTypes[0].survey).to.be.a('string');
+    expect(projectTypes[0].survey).toEqual(expect.any(String));
   });
 });

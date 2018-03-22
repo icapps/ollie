@@ -1,7 +1,6 @@
-# Ollie *WIP*
+# Ollie project generator
 
-A project generation helper.
-
+A project generation helper for web, android and ios projects.
 
 ## Usage
 
@@ -13,8 +12,7 @@ $ ollie
 
 Ollie will guide you through the generation of your new project by asking questions about what project type, your bitbucket credentials, your team, ...
 
-
-### Installation
+## Installation
 
 Install the binary to make ollie availlable in your cli.
 
