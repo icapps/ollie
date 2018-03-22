@@ -13,7 +13,6 @@ class ApiService {
     this.username = answers.gitServiceUsername;
     this.password = answers.gitServicePassword;
     this.repoName = answers.projectName.toLowerCase();
-    // this.repoDescription = answers.description;
 
     const urlObject = url.parse(answers.gitService.api);
     this.service = {
@@ -34,12 +33,15 @@ class ApiService {
     throw Error('Implement in ApiService implementation');
   }
 
-  getRemoteRepo() {
-    return `git@${this.service.remote}:${this.username}/${this.repoName}.git`;
+  getHeaders(){
+    return { 
+      authorization: 'Basic ' + new Buffer(this.username + ':' + this.password).toString('base64'),
+      'User-Agent': 'request' 
+    }
   }
 
-  getRepoUrl() {
-    return `${this.service.protocol}//${this.service.remote}/${this.username}/${this.repoName}`;
+  getRemoteRepo() {
+    return `git@${this.service.remote}:icapps/${this.repoName}.git`;
   }
 
   getErrorObject(body, requestOptions) {
@@ -57,28 +59,26 @@ class ApiService {
         body: this.getRequestBody(),
         method: 'POST',
         json: true,
+        headers: this.getHeaders(),
       };
-
       request(options, (error, response, body) => {
-        if (!error && response.statusCode === 200) resolve(this.getRemoteRepo());
-        else reject(error || new ApiServiceError(body.error));
+        if (!error && response.statusCode < 300) resolve(this.getRemoteRepo());
+        else reject(error || new ApiServiceError(body));
       });
     });
   }
 }
 
 export class GithubApiService extends ApiService {
-  // see https://developer.github.com/v3/repos/#create
   getRequestBody() {
     return {
       name: this.repoName,
-      // description: this.repoDescription,
       private: false,
     };
   }
 
   getRequestUrl() {
-    return `${this.service.protocol}//${this.username}:${this.password}@${this.service.host}${this.service.pathname}repos/${this.username}/${this.repoName}`;
+    return 'https://api.github.com/orgs/icapps/repos';
   }
 
 }
@@ -86,11 +86,12 @@ export class GithubApiService extends ApiService {
 export class BitBucketApiService extends ApiService {
   getRequestBody() {
     return {
+      name: this.repoName,
       is_private: true,
     };
   }
 
   getRequestUrl() {
-    return `${this.service.protocol}//${this.username}:${this.password}@${this.service.host}${this.service.pathname}/repositories/${this.username}/${this.repoName}`;
+    return `https://api.bitbucket.org/2.0/repositories/icapps/${this.repoName}`
   }
 }
