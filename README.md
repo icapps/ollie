@@ -2,7 +2,7 @@
 
 A project generation helper for web, android and ios projects.
 
-[![npm version](https://badge.fury.io/js/ollie.svg)](https://badge.fury.io/js/ollie)
+[![npm version](https://badge.fury.io/js/ollie-cli.svg)](https://badge.fury.io/js/ollie-cli)
 [![Dependencies](https://david-dm.org/icapps/ollie.svg)](https://david-dm.org/icapps/ollie.svg)
 
 ## Usage
