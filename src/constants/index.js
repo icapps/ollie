@@ -16,6 +16,10 @@ const projectTypes = [
     survey: 'FrontendSurvey',
     boilerPlates: [
       {
+        name: 'Silverback React',
+        repository: 'git@github.com:icapps/react-silverback.git',
+      },
+      {
         name: 'React (redux-thunk)',
         repository: 'git@github.com:icapps/react-thunk-template.git',
       }, {
