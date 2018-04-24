@@ -34,8 +34,9 @@ class ApiService {
   }
 
   getHeaders() {
+    const authString = `${this.username}:${this.password}`;
     return {
-      authorization: `Basic ${Buffer.from(`${this.username}:${this.password}}`).toString('base64')}`,
+      authorization: `Basic ${Buffer.from(authString).toString('base64')}`,
       'User-Agent': 'request',
     };
   }
