@@ -64,7 +64,7 @@ class ApiService {
       };
       request(options, (error, response, body) => {
         if (!error && response.statusCode < 300) resolve(this.getRemoteRepo());
-        else reject(error || new ApiServiceError(body));
+        else reject(error || new ApiServiceError(body || { message: `${response.statusCode}: ${response.statusMessage}` }));
       });
     });
   }
