@@ -116,6 +116,7 @@ Give the app password a name and write permissions on Repo's and Projects.
 ### Considerations
 
 The app password will be used to create the repo, but your local ssh key will be used to pull and push the repo.
+You will be prompted to save your credentials in a config file. At all time you can edit or remove the config file (`$HOME/.ollieconfig`)
 
 ## code flow
 

@@ -36,7 +36,7 @@ export default class RemoteRepositoryDialog {
       },
       {
         name: 'gitServicePassword',
-        message: 'And now you password? Don\'t worry, I won\'t tell anyone...',
+        message: `And now the ${gitServicename} application password: `,
         type: 'password',
       },
       {
