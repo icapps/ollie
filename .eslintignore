@@ -1,0 +1,6 @@
+/build/**
+/coverage/**
+/docs/**
+/tmp/**
+!.eslintrc.js
+jest.config.js

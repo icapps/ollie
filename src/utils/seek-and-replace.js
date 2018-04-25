@@ -6,9 +6,9 @@ export default function seekAndReplace(projectName, replacementAnswers, projectP
   const replacePath = projectPath;
 
   const keyDefinitionsFromConfig = _.map(replacementAnswers, (value, key) => ({
-      key,
-      replacement: value,
-    }));
+    key,
+    replacement: value,
+  }));
 
   // always use projectName as a replacement for NAME
   const keyDefinitions = _.merge([], keyDefinitionsFromConfig, [

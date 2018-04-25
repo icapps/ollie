@@ -1,13 +1,10 @@
-import path from 'path';
-
 // dialogs
 import BoilerplateDialog from '../dialogs/boilerplate.dialog';
 import LocalCloneDialog from '../dialogs/local-clone.dialog';
-import RemoteRepositoryDialog from '../dialogs/remote-repository.dialog';
 import ReplaceVariablesDialog from '../dialogs/replace-variables.dialog';
 
 // utils
-import Git from '../utils/git.util.js';
+import Git from '../utils/git.util';
 
 export default class BaseSurvey {
   constructor() {
@@ -17,6 +14,7 @@ export default class BaseSurvey {
   async start() {
     const boilerplateDialog = new BoilerplateDialog(this.type);
     const boilerplateAnswers = await boilerplateDialog.start();
+
     this.answers.projectName = boilerplateAnswers.projectName;
     this.answers.boilerplateRepository = boilerplateAnswers.boilerplate.repository;
 
@@ -28,12 +26,8 @@ export default class BaseSurvey {
     await replaceVariablesDialog.start();
 
     // git
-    const git = new Git(this.answers, this.answers.localPath);
-    await git.setup();
-
-    // // remote git repository (Bitbucket / Github)
-    // const remoteRepoDialog = new RemoteRepositoryDialog(this.answers.projectName);
-    // const remoteRepoAnswers = await remoteRepoDialog.start();
+    const git = new Git(this.answers);
+    this.answers.remoteRepositoryUrl = await git.setup();
 
     return Promise.resolve(this.answers);
   }

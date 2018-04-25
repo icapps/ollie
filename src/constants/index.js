@@ -7,7 +7,7 @@ const projectTypes = [
     boilerPlates: [
       {
         name: 'Express',
-        repository: 'git@github.com:icapps/nodejs-express-template.git',
+        repository: 'git@github.com:icapps/nodejs-silverback.git',
       },
     ],
   },
@@ -15,6 +15,10 @@ const projectTypes = [
     name: 'Frontend',
     survey: 'FrontendSurvey',
     boilerPlates: [
+      {
+        name: 'Silverback React',
+        repository: 'git@github.com:icapps/react-silverback.git',
+      },
       {
         name: 'React (redux-thunk)',
         repository: 'git@github.com:icapps/react-thunk-template.git',
@@ -54,7 +58,7 @@ const projectTypes = [
     name: 'Development',
     survey: 'DevelopmentSurvey',
     boilerPlates: [],
-  }
+  },
 ];
 
 const providers = [
@@ -69,5 +73,19 @@ const providers = [
   },
 ];
 
-export { projectTypes, providers };
+const defaultConfig = {
+  path: `${process.env.HOME}/.ollieconfig`,
+  content: {
+    github: {
+      username: null,
+      password: null,
+    },
+    bitbucket: {
+      username: null,
+      password: null,
+    },
+  },
+};
+
+export { projectTypes, providers, defaultConfig };
 

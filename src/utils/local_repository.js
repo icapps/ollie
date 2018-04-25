@@ -1,5 +1,4 @@
 import fs from 'fs-extra';
-import GitHandler from '../utils/git.util';
 
 export default class LocalRepository {
   constructor(path, name) {
@@ -18,8 +17,5 @@ export default class LocalRepository {
       }
       resolve();
     });
-
-    // const gitHandler = new GitHandler(answers, localRepository);
-    GitHandler.clone(repository, this.path);
   }
 }

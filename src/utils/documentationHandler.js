@@ -20,7 +20,7 @@ export default class DocumentationHandler {
 
   setWebProject() {
     return this.readPackageJson()
-    .then(packageJson => this.writePackageJson(JsonHandler.replaceJsonValues(packageJson, this.getJsonValues())));
+      .then(packageJson => this.writePackageJson(JsonHandler.replaceJsonValues(packageJson, this.getJsonValues())));
   }
 
   getJsonValues() {
@@ -54,7 +54,6 @@ export default class DocumentationHandler {
   /**
    * IOS
    */
-
   setIOSProject() {
     return true;
   }
@@ -74,5 +73,4 @@ export default class DocumentationHandler {
   setRemoteRepository(remoteRepository) {
     this.remoteRepository = remoteRepository;
   }
-
 }

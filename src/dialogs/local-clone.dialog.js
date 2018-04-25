@@ -1,9 +1,7 @@
 import path from 'path';
-import _ from 'lodash';
 import inquirer from 'inquirer';
-import Git from './../utils/git.util';
 import fs from 'fs-extra';
-import exec from './../utils/child-process-promise';
+import Git from './../utils/git.util';
 
 export default class LocalCloneDialog {
   constructor(repository, name) {
@@ -19,15 +17,14 @@ export default class LocalCloneDialog {
   }
 
   async start() {
-    const answers = await inquirer.prompt(this.questions)
+    const answers = await inquirer.prompt(this.questions);
     const clonePath = path.join(answers.localPath, this.name);
 
     if (await fs.pathExistsSync(clonePath)) {
       throw new Error('Couldn\'t clone repository, this path already exists:', clonePath);
     }
-
     // clone repository into clone path (clone command also removes .git folder)
-    await Git.clone(this.repository, clonePath)
+    await Git.clone(this.repository, clonePath);
 
     return {
       localPath: clonePath,

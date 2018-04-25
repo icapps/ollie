@@ -27,14 +27,14 @@ const questions = {
     message: 'So you are an IOS developer, tell me what kind you are.',
     type: 'list',
     choices: _.map(iOSProject.boilerPlates, 'name'),
-    filter: answer => _.find(IOSProject.boilerPlates, { name: answer }),
+    filter: answer => _.find(iOSProject.boilerPlates, { name: answer }),
   },
   android: {
     name: 'boilerplate',
     message: 'So you are an Android developer, tell me what kind you are.',
     type: 'list',
     choices: _.map(androidProject.boilerPlates, 'name'),
-    filter: answer => _.find(AndroidProject.boilerPlates, { name: answer }),
+    filter: answer => _.find(androidProject.boilerPlates, { name: answer }),
   },
 };
 
@@ -50,8 +50,8 @@ export default class BoilerplateDialog {
   constructor(type) {
     this.questions = _.concat(
       [],
-      this._getQuestionsForType(questions, type.toLowerCase()),
-      generalQuestions
+      this.getQuestionsForType(questions, type.toLowerCase()),
+      generalQuestions,
     );
   }
 
@@ -60,18 +60,18 @@ export default class BoilerplateDialog {
       .then(answers => answers);
   }
 
-  _getQuestionsForType(questions, type) {
+  getQuestionsForType(allQuestions, type) {
     if (type === 'dev') {
       return [];
     }
 
-    const questionTypes = _.keys(questions);
+    const questionTypes = _.keys(allQuestions);
 
     if (questionTypes.includes(type)) {
-      return questions[type];
-    } else {
-      throw new Error(`This boilerplate type doens't exist: ${type}.`);
+      return allQuestions[type];
     }
+
+    throw new Error(`This boilerplate type doens't exist: ${type}.`);
   }
 }
 

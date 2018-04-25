@@ -15,13 +15,17 @@ export default class Ollie {
   }
 
   async start() {
-    this.printWelcome();
-
-    const answeringAnswers = await inquirer.prompt(this.openingQuestions());
-    const surveyAnswers = await this.startSurvey(answeringAnswers);
-    const { localPath } = surveyAnswers;
-
-    this.printFinish(localPath);
+    try {
+      this.printWelcome();
+      const answeringAnswers = await inquirer.prompt(this.openingQuestions());
+      const surveyAnswers = await this.startSurvey(answeringAnswers);
+      const { localPath, remoteRepositoryUrl } = surveyAnswers;
+      const [, hostName, teamName, repoName] = remoteRepositoryUrl.match(/git@(\S+):(\S+)\/(\S+)\.git/);
+      this.printFinish(localPath, `https://${hostName}/${teamName}/${repoName}`);
+    } catch (error) {
+      console.log(chalk.red(`Error: ${error}`));
+      console.log(chalk.red(error.stack));
+    }
   }
 
   printWelcome() {
@@ -31,8 +35,9 @@ export default class Ollie {
     console.log(chalk.blue('Let\'s get you started with a project...'));
   }
 
-  printFinish(localPath) {
-    console.log(chalk.blue(`Done, your new project is availlable at '${localPath}' 👏`));
+  printFinish(localPath, remoteRepositoryUrl) {
+    console.log(chalk.blue(`Done! You can find your project at '${remoteRepositoryUrl}' 👏`));
+    console.log(chalk.blue(`Locally, your new project is availlable at '${localPath}' 👏`));
   }
 
   openingQuestions() {
@@ -46,7 +51,7 @@ export default class Ollie {
     ];
   }
 
-  async startSurvey(answers) {
+  startSurvey(answers) {
     const project = _.find(this.projectTypes, { name: answers.projectType });
     const SurveyClass = this.surveys[project.survey];
     const survey = new SurveyClass();
