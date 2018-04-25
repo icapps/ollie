@@ -73,5 +73,19 @@ const providers = [
   },
 ];
 
-export { projectTypes, providers };
+const defaultConfig = {
+  path: `${process.env.HOME}/.ollieconfig`,
+  content: {
+    github: {
+      username: null,
+      password: null,
+    },
+    bitbucket: {
+      username: null,
+      password: null,
+    },
+  },
+};
+
+export { projectTypes, providers, defaultConfig };
 

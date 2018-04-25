@@ -27,7 +27,8 @@ export default class BaseSurvey {
 
     // git
     const git = new Git(this.answers);
-    await git.setup();
+    this.answers.remoteRepositoryUrl = await git.setup();
+
     return Promise.resolve(this.answers);
   }
 }

@@ -10,14 +10,15 @@ export default class Git {
   async setup() {
     await this.initialize();
     await this.initialCommit();
-    await this.setupRemote();
+    const remoteRepositoryUrl = await this.setupRemote();
 
-    return Promise.resolve();
+    return Promise.resolve(remoteRepositoryUrl);
   }
 
   async setupRemote() {
-    await this.createRemoteRepository();
+    const remoteRepositoryUrl = await this.createRemoteRepository();
     await this.pushToRemote();
+    return remoteRepositoryUrl;
   }
 
   initialize() {
@@ -34,6 +35,7 @@ export default class Git {
     const remoteRepoDialog = new RemoteRepositoryDialog(this.answers.projectName);
     const remoteRepositoryUrl = await remoteRepoDialog.start();
     exec(`git -C "${this.localRepository}" remote add origin ${remoteRepositoryUrl}`);
+    return remoteRepositoryUrl;
   }
 
   pushToRemote() {
