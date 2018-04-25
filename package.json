@@ -14,7 +14,8 @@
     "prepublish": "yarn build",
     "test": "jest --forceExit",
     "test:coverage": "jest --coverage --collectCoverageFrom=src/**/*.js --forceExit",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "release": "yarn prepublish && np --no-cleanup"
   },
   "precommit": [
     "lint"
@@ -56,6 +57,7 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "jest": "^22.4.3",
+    "np": "^2.20.1",
     "pre-commit": "^1.2.2"
   }
 }
