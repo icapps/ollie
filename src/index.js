@@ -8,7 +8,7 @@ import { projectTypes } from './constants';
 import surveys from './surveys';
 
 program
-  .version('0.0.1')
+  .version(process.env.npm_package_version)
   .option('-d, --dev', 'Run in development mode')
   .parse(process.argv);
 
