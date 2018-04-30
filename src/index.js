@@ -8,7 +8,7 @@ import { projectTypes } from './constants';
 import surveys from './surveys';
 
 program
-  .version(process.env.npm_package_version)
+  .version('1.1.3') // TODO: get version from npm
   .option('-d, --dev', 'Run in development mode')
   .parse(process.argv);
 
