@@ -111,7 +111,9 @@ Give the app password a name and Full control of private repositories.
 
 Click 'create app password'
 
-Give the app password a name and write permissions on Repo's and Projects.
+Give the app password a name and add the following permission:
+  - Read/Write on _Projects_
+  - Admin on _Repositories_
 
 ### Considerations
 
