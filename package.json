@@ -41,6 +41,7 @@
     "inquirer": "~5.1.0",
     "js-yaml": "~3.11.0",
     "lodash": "~4.17.5",
+    "read-package-json": "^2.0.13",
     "request": "~2.85.0",
     "seek-and-replace": "~1.0.4"
   },
