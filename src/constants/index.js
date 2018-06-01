@@ -6,7 +6,7 @@ const projectTypes = [
     survey: 'BackendSurvey',
     boilerPlates: [
       {
-        name: 'Express',
+        name: 'Silverback',
         repository: 'git@github.com:icapps/nodejs-silverback.git',
       },
     ],
